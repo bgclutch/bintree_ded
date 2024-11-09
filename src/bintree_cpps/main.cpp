@@ -11,56 +11,24 @@ int main(void)
 
     Node* root = (Node*)calloc(sizeof(Node), 1);
 
-    NodeElem_t elem = 10;
+    NodeElem_t elem = 0;
+
+    printf("input your root number:");
+    scanf("%d", &elem);
 
     elem_ctor(&root->data, sizeof(NodeElem_t));
 
-    fprintf(stderr, "penis %p\n", root->data);
-
     memcpy(root->data, &elem, sizeof(NodeElem_t));
 
-    tree_print(root);
-    fprintf(stderr, "\n\n");
-
-    elem = 4;
-
-    if(insert(root, elem) != NODE_IS_OKAY)
+    while(scanf("%d", &elem) && elem != -1945)
     {
-        return NODE_INSERT_ERR;
+        if(insert(root, elem) != NODE_IS_OKAY)
+            return NODE_INSERT_ERR;
+        printf("input number:");
     }
 
     tree_print(root);
-    fprintf(stderr, "\n\n");
-
-    elem = 12;
-
-    if(insert(root, elem) != NODE_IS_OKAY)
-    {
-        return NODE_INSERT_ERR;
-    }
-
-    tree_print(root);
-    fprintf(stderr, "\n\n");
-
-    elem = 1;
-
-    if(insert(root, elem) != NODE_IS_OKAY)
-    {
-        return NODE_INSERT_ERR;
-    }
-
-    tree_print(root);
-    fprintf(stderr, "\n\n");
-
-    elem = -100;
-
-    if(insert(root, elem) != NODE_IS_OKAY)
-    {
-        return NODE_INSERT_ERR;
-    }
-
-    tree_print(root);
-    fprintf(stderr, "\n\n");
+    fprintf(stderr, "\n");
 
     tree_branch_dtor(root);
 

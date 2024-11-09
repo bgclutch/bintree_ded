@@ -8,10 +8,11 @@
 
 Tree_Errors insert(Node* node, const NodeElem_t elem)
 {
-    NODE_ERR(init_free_node(node, elem, *(NodeElem_t*)node->data), NODE_FIND_ERR);
-
-    // tree_print(node);
-    // fprintf(stderr, "\n\n");
+    if(init_free_node(node, elem, *(NodeElem_t*)node->data) != NODE_IS_OKAY)
+    {
+        tree_branch_dtor(node);
+        return NODE_INSERT_ERR;
+    }
 
     return NODE_IS_OKAY;
 }
@@ -60,7 +61,7 @@ Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t c
     assert(node);
     assert(node->data);
 
-    if(comp_elem > elem)               // switch?
+    if(comp_elem >= elem)               // switch?
     {
         if(node->left == nullptr)
         {
@@ -83,16 +84,24 @@ Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t c
     {
         if(node->right == nullptr)
         {
-            NODE_ERR(node_init(&node->right, elem), NODE_INIT_ERR);
+           if(node_init(&node->right, elem) != NODE_IS_OKAY)
+            {
+                tree_branch_dtor(node);
+                return NODE_INIT_ERR;
+            }
         }
         else
         {
-            NODE_ERR(init_free_node(node->right, elem, *(NodeElem_t*)node->right->data), NODE_FIND_ERR);
+           if(init_free_node(node->right, elem, *(NodeElem_t*)node->right->data))
+            {
+                tree_branch_dtor(node);
+                return NODE_INIT_ERR;
+            }
         }
     }
     else
     {
-        fprintf(stderr, "penis in init\n");
+        fprintf(stderr, "undefined action in init\n");
         return NODE_INIT_ERR;
     }
 
