@@ -14,12 +14,15 @@ struct Node
     void* data;
     Node* left;
     Node* right;
+    void* parent;
+    int rank;
 };
 
 
 struct Tree
 {
     Node* root; // ctor elem && dtor elem
+    int tree_size = 0;
 
 
     // tree size
@@ -43,7 +46,7 @@ enum Tree_Errors
 
 Tree_Errors insert(Node* node, const NodeElem_t elem);
 
-Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t comp_elem);
+Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t comp_elem, int* node_counter);
 
 Tree_Errors node_init(Node** node, const NodeElem_t elem);
 
