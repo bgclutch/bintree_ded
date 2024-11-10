@@ -10,20 +10,19 @@
 int main(void)
 {
     Node* root = (Node*)calloc(sizeof(Node), 1);
-    root->rank = 0;
     root->parent = nullptr;
 
     NodeElem_t elem = 0;
 
     printf("input your root number:");
-    scanf("%d", &elem);
+    scanf("%s", &elem);
 
     elem_ctor(&root->data, sizeof(NodeElem_t));
 
     memcpy(root->data, &elem, sizeof(NodeElem_t));
 
     printf("input number:");
-    while(scanf("%d", &elem) && elem != -1945)
+    while(scanf("%s", elem) && elem != "q")
     {
         if(insert(root, elem) != NODE_IS_OKAY)
             return NODE_INSERT_ERR;
@@ -31,7 +30,6 @@ int main(void)
     }
 
     Dump_St General_Dump = {};
-
 
     prepare_graphic_file(General_Dump);
     graphic_dump(root, &General_Dump);

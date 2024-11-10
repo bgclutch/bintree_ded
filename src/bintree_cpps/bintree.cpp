@@ -6,7 +6,7 @@
 #include "../bintree_headers/bintree.h"
 
 
-Tree_Errors insert(Node* node, const NodeElem_t elem)
+Tree_Errors insert(Node* node, NodeElem_t elem)
 {
     int node_counter = 0;
 
@@ -54,6 +54,7 @@ Tree_Errors node_init(Node** node, const NodeElem_t elem)
     }
 
     memcpy((*node)->data, &elem, sizeof(elem));
+    (*node)->data_size = strlen(elem);
 
     return NODE_IS_OKAY;
 }
@@ -73,7 +74,6 @@ Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t c
                 tree_branch_dtor(node);
                 return NODE_INIT_ERR;
             }
-            node->left->rank = node->rank + 1;
             (*node_counter)++;
             memcpy(&node->left->parent, (void*)node, sizeof(Node*));
         }
@@ -95,7 +95,6 @@ Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t c
                 tree_branch_dtor(node);
                 return NODE_INIT_ERR;
             }
-            node->right->rank = node->rank + 1;
             (*node_counter)++;
             memcpy(&node->right->parent, (void*)node, sizeof(Node*));
         }
@@ -140,7 +139,7 @@ void tree_print(Node* node)
     if(node->left)
         tree_print(node->left);
 
-    fprintf(stderr, "(%d", *(NodeElem_t*)node->data);
+    fprintf(stderr, "(%s", *(NodeElem_t*)node->data);
 
     if(node->right)
         tree_print(node->right);

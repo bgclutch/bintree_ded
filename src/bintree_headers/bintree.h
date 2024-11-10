@@ -7,7 +7,7 @@
 #define NODE_ERR(result, error) if(tree_is_err(result, __FILE__, __LINE__) == MACRO_ERR) return error
 
 
-typedef int NodeElem_t;
+typedef char*  NodeElem_t;
 
 struct Node
 {
@@ -15,7 +15,7 @@ struct Node
     Node* left;
     Node* right;
     void* parent;
-    int rank;
+    size_t data_size;
 };
 
 
@@ -44,7 +44,7 @@ enum Tree_Errors
 };
 
 
-Tree_Errors insert(Node* node, const NodeElem_t elem);
+Tree_Errors insert(Node* node, NodeElem_t elem);
 
 Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t comp_elem, int* node_counter);
 
