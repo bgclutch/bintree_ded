@@ -126,6 +126,8 @@ Akinator_Err read_tree_from_file(Tree* tree)
         return AKINATOR_BUFFER_CTOR_ERR;
     }
 
+    tree->buffer = buffer;
+
     const char* bufend = buffer + buffer_size;
     char* root_question = find_word_begin(buffer, bufend);
 

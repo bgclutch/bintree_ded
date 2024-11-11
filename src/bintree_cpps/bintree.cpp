@@ -45,8 +45,6 @@ Tree_Errors node_init(Node** node, const NodeElem_t elem, const size_t elem_size
 
     *node = new_node;
 
-    elem_ctor((void**)(&(*node)->data), sizeof(NodeElem_t));
-
     (*node)->data = elem;
 
     (*node)->data_size = elem_size;

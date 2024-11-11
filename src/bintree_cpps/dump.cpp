@@ -61,7 +61,7 @@ void graphic_dump(Node* node, Dump_St* General_Dump)
     {
         fill_file_with_null(graph_dump_file, &node->left);
 
-        fprintf(graph_dump_file, "\"%p\" -> \"%p\";\n", node, &node->left);
+    fprintf(graph_dump_file, "\"%p\" -> \"%p\";\n", node, &node->left);
 
         if(fclose(graph_dump_file))
             assert(0);
@@ -274,7 +274,7 @@ void print_to_dump_file(const Node* node, FILE* dump_file, const Colors color)
     fprintf(dump_file, ",label=<\n"
                        "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\">\n"
                        "<tr><td colspan=\"2\">Address: %p</td></tr>\n"
-                       "<tr><td colspan=\"2\">Data: ", node);
+                       "<tr><td colspan=\"2\">", node);
 
     print_data_string(node->data, node->data_size, dump_file);
 

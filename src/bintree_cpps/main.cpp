@@ -56,6 +56,7 @@ int main(void)
 
 
     tree_branch_dtor(tree.root);
+    free(tree.buffer);
 
 
     return 0;
