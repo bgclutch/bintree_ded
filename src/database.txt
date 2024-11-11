@@ -1,3 +1,1 @@
-{вы матвей?{вы обделены умом?{вы спящий матвей}{вы матвей сигма}}{у вас хорошее настроение?{вы грустный матвей}{вы веселый матвей}}}
-
-{вы матвей?{вы обделены умом?{вы шарите в сосе?{вы спящий матвей}{вы матвей на сосе}}{вы матвей сигма}}{у вас хорошее настроение?{вы грустный матвей}{вы веселый матвей}}}
+{are you matvey?{aren't you smart?{are you good at obschesos?{you are sleeping matvey}{you are matvey on sos}}{you are sigma-matvey}}{are your mood is good?{you are sad matvey}{you are happy matvey}}}

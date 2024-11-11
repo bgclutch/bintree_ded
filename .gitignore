@@ -1,3 +1,2 @@
-bintree_o/*.o
-
+*.o
 bintree

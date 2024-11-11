@@ -148,7 +148,7 @@ void fill_file_with_number(FILE* graph_dump_file, Node* node)
         fprintf(graph_dump_file, "\"%p\" [style = \"filled\", fillcolor = \"lightgreen\", label=<\n"
                                  "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\">\n"
                                  "<tr><td colspan=\"2\">Address: %p</td></tr>\n"
-                                 "<tr><td colspan=\"2\">Data: %d</td></tr>\n"
+                                 "<tr><td colspan=\"2\">Data: %s</td></tr>\n"
                                  "<tr><td align = \"center\" >Left:%p</td><td align = \"center\" >Right:%p</td></tr></table>>];\n\n",
                                  node, node, *(NodeElem_t*)node->data, node->left, node->right);
     }
@@ -157,7 +157,7 @@ void fill_file_with_number(FILE* graph_dump_file, Node* node)
         fprintf(graph_dump_file, "\"%p\" [style = \"filled\", fillcolor = \"#b18b62\", label=<\n"
                                  "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\">\n"
                                  "<tr><td colspan=\"2\">Address: %p</td></tr>\n"
-                                 "<tr><td colspan=\"2\">Data: %d</td></tr>\n"
+                                 "<tr><td colspan=\"2\">Data: %s</td></tr>\n"
                                  "<tr><td align = \"center\" >Left:%p</td><td align = \"center\" >Right:%p</td></tr></table>>];\n\n",
                                  node, node, *(NodeElem_t*)node->data, node->left, node->right);
     }
@@ -166,7 +166,7 @@ void fill_file_with_number(FILE* graph_dump_file, Node* node)
         fprintf(graph_dump_file, "\"%p\" [style = \"filled\", fillcolor = \"#ced7ea\", label=<\n"
                                  "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\">\n"
                                  "<tr><td colspan=\"2\">Address: %p</td></tr>\n"
-                                 "<tr><td colspan=\"2\">Data: %d</td></tr>\n"
+                                 "<tr><td colspan=\"2\">Data: %s</td></tr>\n"
                                  "<tr><td align = \"center\" >Left:%p</td><td align = \"center\" >Right:%p</td></tr></table>>];\n\n",
                                  node, node, *(NodeElem_t*)node->data, node->left, node->right);
     }

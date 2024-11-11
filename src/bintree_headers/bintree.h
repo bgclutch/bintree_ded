@@ -7,11 +7,11 @@
 #define NODE_ERR(result, error) if(tree_is_err(result, __FILE__, __LINE__) == MACRO_ERR) return error
 
 
-typedef char*  NodeElem_t;
+typedef char* NodeElem_t;
 
 struct Node
 {
-    void* data;
+    char* data;
     Node* left;
     Node* right;
     void* parent;
@@ -22,7 +22,7 @@ struct Node
 struct Tree
 {
     Node* root; // ctor elem && dtor elem
-    int tree_size = 0;
+    size_t tree_size = 0;
 
 
     // tree size
@@ -48,7 +48,7 @@ Tree_Errors insert(Node* node, NodeElem_t elem);
 
 Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t comp_elem, int* node_counter);
 
-Tree_Errors node_init(Node** node, const NodeElem_t elem);
+Tree_Errors node_init(Node** node, const NodeElem_t elem, const size_t elem_size);
 
 void tree_branch_dtor(Node* node);
 

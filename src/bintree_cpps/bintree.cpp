@@ -34,7 +34,7 @@ void elem_dtor(void* elem)
 }
 
 
-Tree_Errors node_init(Node** node, const NodeElem_t elem)
+Tree_Errors node_init(Node** node, const NodeElem_t elem, const size_t elem_size)
 {
     assert(!*node);
 
@@ -45,16 +45,17 @@ Tree_Errors node_init(Node** node, const NodeElem_t elem)
 
     *node = new_node;
 
-    elem_ctor(&(*node)->data, sizeof(NodeElem_t));
+    elem_ctor((void**)(&(*node)->data), sizeof(NodeElem_t));
 
+    (*node)->data = elem;
+
+    (*node)->data_size = elem_size;
 
     if((*node)->left != nullptr || (*node)->right != nullptr)
     {
         return NODE_INIT_ERR;
     }
 
-    memcpy((*node)->data, &elem, sizeof(elem));
-    (*node)->data_size = strlen(elem);
 
     return NODE_IS_OKAY;
 }
@@ -69,7 +70,7 @@ Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t c
     {
         if(node->left == nullptr)
         {
-            if(node_init(&node->left, elem) != NODE_IS_OKAY)
+            if(node_init(&node->left, elem, strlen(elem)) != NODE_IS_OKAY) // FIXME STRLEN ELEM WHAT
             {
                 tree_branch_dtor(node);
                 return NODE_INIT_ERR;
@@ -90,7 +91,7 @@ Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t c
     {
         if(node->right == nullptr)
         {
-           if(node_init(&node->right, elem) != NODE_IS_OKAY)
+           if(node_init(&node->right, elem, strlen(elem)) != NODE_IS_OKAY) //FIXME STRLEN ELEM WHAT
             {
                 tree_branch_dtor(node);
                 return NODE_INIT_ERR;
@@ -159,7 +160,7 @@ void tree_branch_dtor(Node* node)
         tree_branch_dtor(node->right);
     }
 
-    elem_dtor(node->data);
+    elem_dtor((void*)node->data);
     free(node);
 
     return;

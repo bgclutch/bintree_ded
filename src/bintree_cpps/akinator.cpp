@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #include "../bintree_headers/akinator.h"
 #include "../bintree_headers/bintree.h"
@@ -10,7 +11,7 @@
 #include "../../lib_buffer_proc/buffer.h"
 
 
-Akinator_Err get_data_buffer(char* buffer, Tree* tree, size_t* buffer_size)
+Akinator_Err get_data_buffer(char** buffer, Tree* tree, size_t* buffer_size)
 {
     FILE* buffer_file = nullptr;
 
@@ -19,9 +20,9 @@ Akinator_Err get_data_buffer(char* buffer, Tree* tree, size_t* buffer_size)
 
     *buffer_size = symbols_number(buffer_file);
 
-    char* buffer = buffer_create(*buffer_size, sizeof(char), buffer_file);
+    *buffer = buffer_create(*buffer_size, sizeof(char), buffer_file);
 
-    if(!buffer)
+    if(!*buffer)
     {
         if(file_close(buffer_file))
             return AKINATOR_BUFFER_FILE_CLOSE_ERR;
@@ -29,15 +30,17 @@ Akinator_Err get_data_buffer(char* buffer, Tree* tree, size_t* buffer_size)
         return AKINATOR_BUFFER_CTOR_ERR;
     }
 
-    int scope_difference = scope_checker(buffer, *buffer_size, tree);
+    size_t scope_difference = scope_checker(*buffer, *buffer_size, tree);
 
     if(scope_difference != 0)
     {
-        fprintf(stderr, "begin and end scopes difference: %d\n", scope_difference);
+        fprintf(stderr, "begin and end scopes difference: %lu\n", scope_difference);
         free(buffer);
         if(file_close(buffer_file))
             return AKINATOR_BUFFER_FILE_CLOSE_ERR;
     }
+
+    fprintf(stderr, "akinator get data buffer:%p buf size %lu\n", *buffer, *buffer_size);
 
 
     if(file_close(buffer_file))
@@ -62,7 +65,6 @@ Akinator_Err akinator_is_err(const Akinator_Err result, const char* name, const 
 }
 
 
-
 Tree_Errors add_new_answer()
 {
 
@@ -85,7 +87,7 @@ Tree_Errors move_old_answer()
 }
 
 
-int scope_checker(const char* buffer, const size_t buffer_size, Tree* tree)
+size_t scope_checker(const char* buffer, const size_t buffer_size, Tree* tree)
 {
     size_t counter_scope_begin = 0;
     size_t counter_scope_end   = 0;
@@ -105,17 +107,33 @@ int scope_checker(const char* buffer, const size_t buffer_size, Tree* tree)
 }
 
 
-Akinator_Err init_nodes(char* buffer)
+Akinator_Err get_tree(Tree* tree)
 {
-    assert(buffer);
+    assert(tree);
 
-    Tree* tree = (Tree*)calloc(sizeof(Tree), 1);
+    tree = (Tree*)calloc(sizeof(Tree), 1);
 
     size_t buffer_size = 0;
 
     char* buffer = nullptr;
 
-    AKN_ERR(get_data_buffer(buffer, tree, &buffer_size), AKINATOR_BUFFER_CTOR_ERR);
+    if(get_data_buffer(&buffer, tree, &buffer_size) != AKINATOR_STILL_ALIVE)
+    {
+        free(buffer);
+        return AKINATOR_BUFFER_CTOR_ERR;
+    }
+
+    const char* bufend = buffer + buffer_size;
+
+    char* root_question = find_word_begin(buffer, bufend);
+
+
+    size_t all_bytes = 0;
+
+    size_t root_question_size = get_node_data_size(root_question);
+    all_bytes += root_question_size;
+
+    node_init(&tree->root, root_question, root_question_size);
 
     Node* root_addr = tree->root;
 
@@ -123,42 +141,80 @@ Akinator_Err init_nodes(char* buffer)
     root_addr->right  = nullptr;
     root_addr->parent = nullptr;
 
-    const char* bufend = buffer + buffer_size;
-
-
-    const char* root_question = find_word_begin(buffer, bufend);
-
-    root_addr->data_size = strlen(root_question);
-
-
-    elem_ctor(&root_addr->data, root_addr->data_size);
-
-
-    if(init_tree(root_addr->left) != NODE_IS_OKAY)
+    if(init_tree_nodes(root_addr, buffer, &all_bytes) != AKINATOR_STILL_ALIVE)
     {
-
+        free(buffer);
+        return AKINATOR_IS_DEAD;
     }
-
 
     return AKINATOR_STILL_ALIVE;
 }
 
 
-const char* find_word_begin(const char* buffer, const char* bufend)
+char* find_word_begin(char* buffer, const char* bufend)
 {
     size_t index_buffer = 0;
 
-    while(buffer[index_buffer] == '{' || buffer[index_buffer] == '}' && buffer + index_buffer < bufend)
-    {
-        index_buffer++;
-    }
-
+    for(; !isalpha(buffer[index_buffer]) && buffer + index_buffer < bufend; index_buffer++);
     return buffer + index_buffer;
 }
 
 
-Akinator_Err init_tree()
+void create_new_node(Node** node, char* buffer, size_t* all_bytes)
 {
-    init_free_node()
+    assert(!*node);
+    assert(buffer);
+    assert(all_bytes);
 
+
+    const char* bufend = buffer + strlen(buffer);
+    char* word_begin = find_word_begin(buffer + *all_bytes, bufend);
+
+    fprintf(stderr, "crnew node wrdbgn address %p\n\n", word_begin);
+
+    size_t elem_size = get_node_data_size(word_begin);
+    *all_bytes += elem_size;
+
+    node_init(node, word_begin, elem_size);
+
+    if(*((*node)->data + (*node)->data_size + 1) == '}')
+    {
+        return;
+    }
+    else
+    {
+        create_new_node(&(*node)->left, buffer, all_bytes);
+        (*node)->left->parent = node;
+
+        create_new_node(&(*node)->right, buffer, all_bytes);
+        (*node)->right->parent = node;
+    }
+
+    return;
+}
+
+
+Akinator_Err init_tree_nodes(Node* node, char* buffer, size_t* all_bytes)
+{
+    assert(node);
+    assert(buffer);
+    assert(all_bytes);
+
+    create_new_node(&node->left, buffer, all_bytes);
+    node->left->parent = node;
+
+    create_new_node(&node->right, buffer, all_bytes);
+    node->left->parent = node;
+
+    return AKINATOR_STILL_ALIVE;
+}
+
+
+size_t get_node_data_size(const char* word_beginning)
+{
+    size_t index = 0;
+
+    for(; *(word_beginning + index) != '{' && *(word_beginning + index) != '}'; index++);
+
+    return index;
 }
