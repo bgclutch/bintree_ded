@@ -32,8 +32,13 @@ int main(void)
 
     Tree tree = {};
 
-    get_tree(&tree);
+    read_tree_from_file(&tree);
 
+    fprintf(stderr, "\n\nmain tree:%p\n", tree.root);
+
+    // fprintf(stderr, "\n\n%p %p\n\n", tree.root->left, tree.root->right);
+
+    // tree_print(tree.root);
 
     Dump_St General_Dump = {};
 
@@ -46,7 +51,6 @@ int main(void)
     close_file_html(General_Dump.HTML_DUMP);
 
 
-    tree_print(tree.root);
     fprintf(stderr, "\n");
 
 

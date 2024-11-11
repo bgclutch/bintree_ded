@@ -45,7 +45,6 @@ void graphic_dump(Node* node, Dump_St* General_Dump)
     if(graph_dump_file == nullptr)
         assert(0);
 
-
     if(node->left)
     {
         fill_file_with_number(graph_dump_file, node->left);
@@ -145,30 +144,15 @@ void fill_file_with_number(FILE* graph_dump_file, Node* node)
 {
     if(node->left == node->right)
     {
-        fprintf(graph_dump_file, "\"%p\" [style = \"filled\", fillcolor = \"lightgreen\", label=<\n"
-                                 "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\">\n"
-                                 "<tr><td colspan=\"2\">Address: %p</td></tr>\n"
-                                 "<tr><td colspan=\"2\">Data: %s</td></tr>\n"
-                                 "<tr><td align = \"center\" >Left:%p</td><td align = \"center\" >Right:%p</td></tr></table>>];\n\n",
-                                 node, node, *(NodeElem_t*)node->data, node->left, node->right);
+        print_to_dump_file(node, graph_dump_file, LEAF_COLOR);
     }
     else if(node->parent != nullptr && node->left != node->right)
     {
-        fprintf(graph_dump_file, "\"%p\" [style = \"filled\", fillcolor = \"#b18b62\", label=<\n"
-                                 "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\">\n"
-                                 "<tr><td colspan=\"2\">Address: %p</td></tr>\n"
-                                 "<tr><td colspan=\"2\">Data: %s</td></tr>\n"
-                                 "<tr><td align = \"center\" >Left:%p</td><td align = \"center\" >Right:%p</td></tr></table>>];\n\n",
-                                 node, node, *(NodeElem_t*)node->data, node->left, node->right);
+        print_to_dump_file(node, graph_dump_file, BRANCH_COLOR);
     }
     else
     {
-        fprintf(graph_dump_file, "\"%p\" [style = \"filled\", fillcolor = \"#ced7ea\", label=<\n"
-                                 "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\">\n"
-                                 "<tr><td colspan=\"2\">Address: %p</td></tr>\n"
-                                 "<tr><td colspan=\"2\">Data: %s</td></tr>\n"
-                                 "<tr><td align = \"center\" >Left:%p</td><td align = \"center\" >Right:%p</td></tr></table>>];\n\n",
-                                 node, node, *(NodeElem_t*)node->data, node->left, node->right);
+        print_to_dump_file(node, graph_dump_file, ROOT_COLOR);
     }
 }
 
@@ -252,4 +236,49 @@ void close_file_html(const char* filename)
             "</html>\n");
 
     fclose(dump_file);
+}
+
+
+void print_data_string(const char* data, const size_t data_size, FILE* dump_file)
+{
+    for(size_t i = 0; i < data_size; i++)
+        fputc(data[i], dump_file);
+}
+
+
+void print_to_dump_file(const Node* node, FILE* dump_file, const Colors color)
+{
+
+    fprintf(dump_file, "\"%p\" [style = \"filled\", fillcolor = ", node);
+
+    switch (color)
+    {
+        case ROOT_COLOR:
+            fprintf(dump_file, "\"#ced7ea\"");
+            break;
+
+        case BRANCH_COLOR:
+            fprintf(dump_file, "\"#b18b62\"");
+            break;
+
+        case LEAF_COLOR:
+            fprintf(dump_file, "\"lightgreen\"");
+            break;
+
+        default:
+        {
+            assert(0);
+        }
+    }
+
+    fprintf(dump_file, ",label=<\n"
+                       "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\">\n"
+                       "<tr><td colspan=\"2\">Address: %p</td></tr>\n"
+                       "<tr><td colspan=\"2\">Data: ", node);
+
+    print_data_string(node->data, node->data_size, dump_file);
+
+    fprintf(dump_file, "</td></tr>\n"
+                       "<tr><td align = \"center\" >Left:%p</td><td align = \"center\" >Right:%p</td></tr></table>>];\n\n",
+                       node->left, node->right);
 }

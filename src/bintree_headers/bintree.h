@@ -23,8 +23,6 @@ struct Tree
 {
     Node* root; // ctor elem && dtor elem
     size_t tree_size = 0;
-
-
     // tree size
 };
 

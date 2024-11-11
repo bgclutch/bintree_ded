@@ -140,7 +140,7 @@ void tree_print(Node* node)
     if(node->left)
         tree_print(node->left);
 
-    fprintf(stderr, "(%s", *(NodeElem_t*)node->data);
+    fprintf(stderr, "(%c", *node->data);
 
     if(node->right)
         tree_print(node->right);
@@ -160,7 +160,6 @@ void tree_branch_dtor(Node* node)
         tree_branch_dtor(node->right);
     }
 
-    elem_dtor((void*)node->data);
     free(node);
 
     return;

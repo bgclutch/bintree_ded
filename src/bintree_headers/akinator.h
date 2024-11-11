@@ -27,11 +27,11 @@ const char* const DATABASE = "src/database.txt";
 
 Akinator_Err akinator_is_err(const Akinator_Err result, const char* name, const size_t line);
 
-Akinator_Err get_data_buffer(char** buffer, Tree* tree, size_t* buffer_size);
+Akinator_Err create_data_buffer(char** buffer, Tree* tree, size_t* buffer_size);
 
-size_t scope_checker(const char* buffer, const size_t buffer_size, Tree* tree);
+size_t scope_checker(const char* buffer, const size_t buffer_size, size_t* tree_size);
 
-Akinator_Err get_tree(Tree* tree);
+Akinator_Err read_tree_from_file(Tree* tree);
 
 char* find_word_begin(char* buffer, const char* bufend);
 
@@ -40,6 +40,5 @@ void create_new_node(Node** node, char* buffer, size_t* all_bytes);
 Akinator_Err init_tree_nodes(Node* node, char* buffer, size_t* all_bytes);
 
 size_t get_node_data_size(const char* word_beginning);
-
 
 #endif // AKINATOR_H_

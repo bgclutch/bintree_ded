@@ -41,6 +41,14 @@ enum Dump_Errors
 };
 
 
+enum Colors
+{
+    ROOT_COLOR,
+    BRANCH_COLOR,
+    LEAF_COLOR,
+};
+
+
 
 Dump_Errors dump_is_err(Dump_Errors result, const char* name, const size_t line);
 
@@ -53,6 +61,10 @@ void close_graphic_dump(const Dump_St General_Dump);
 void fill_file_with_number(FILE* graph_dump_file, Node* node);
 
 void fill_file_with_null(FILE* graph_dump_file, void* node);
+
+void print_data_string(const char* data, const size_t data_size, FILE* dump_file);
+
+void print_to_dump_file(const Node* node, FILE* dump_file, const Colors color);
 
 
 void dot_to_png(const char* name, Dump_St* General_Dump);
