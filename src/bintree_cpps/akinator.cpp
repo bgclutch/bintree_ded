@@ -40,9 +40,6 @@ Akinator_Err create_data_buffer(char** buffer, Tree* tree, size_t* buffer_size)
             return AKINATOR_BUFFER_FILE_CLOSE_ERR;
     }
 
-    fprintf(stderr, "akinator get data buffer:%p buf size %lu\n", *buffer, *buffer_size);
-
-
     if(file_close(buffer_file))
         return AKINATOR_BUFFER_FILE_CLOSE_ERR;
 
@@ -115,8 +112,6 @@ Akinator_Err read_tree_from_file(Tree* tree)
 {
     assert(tree);
 
-    // tree->root = (Node*)calloc(sizeof(Node), 1);
-
     size_t buffer_size = 0;
     char* buffer = nullptr;
 
@@ -179,11 +174,6 @@ void create_new_node(Node** node, char* buffer, size_t* all_bytes)
 
     node_init(node, word_begin, elem_size);
 
-    for(size_t index = 0; index < (*node)->data_size; index++)
-        fprintf(stderr, "%c", (*node)->data[index]);
-    fprintf(stderr, " ");
-
-
     if(*(buffer + *all_bytes) == '}')
     {
         return;
@@ -209,8 +199,6 @@ Akinator_Err init_tree_nodes(Node* node, char* buffer, size_t* all_bytes)
 
     create_new_node(&node->left, buffer, all_bytes);
     node->left->parent = node;
-
-    fprintf(stderr, "\n\nINIT TREE NODES PENIS\n\n");
 
     create_new_node(&node->right, buffer, all_bytes);
     node->left->parent = node;

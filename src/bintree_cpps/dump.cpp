@@ -49,7 +49,7 @@ void graphic_dump(Node* node, Dump_St* General_Dump)
     {
         fill_file_with_number(graph_dump_file, node->left);
 
-        fprintf(graph_dump_file, "\"%p\" -> \"%p\";\n", node, node->left);
+        fprintf(graph_dump_file, "\"%p\" -> \"%p\"[label=\"NO\"];\n", node, node->left);
 
         if(fclose(graph_dump_file))
             assert(0);
@@ -78,7 +78,7 @@ void graphic_dump(Node* node, Dump_St* General_Dump)
     {
         fill_file_with_number(graph_dump_file, node->right);
 
-        fprintf(graph_dump_file, "\"%p\" -> \"%p\";\n", node, node->right);
+        fprintf(graph_dump_file, "\"%p\" -> \"%p\"[label=\"YES\"];\n", node, node->right);
 
 
         if(fclose(graph_dump_file))
@@ -176,17 +176,12 @@ void dot_to_png(const char* name, Dump_St* General_Dump)
 
     snprintf(pngname, pngname_size, "%s%s%d%s", PATH, GRAPH, General_Dump->filenum, PNGXT);
 
-    fprintf(stderr, "\n\n%s\n\n", pngname);
-
     size_t dtpng_size = strlen(DOT) + strlen(SPACE) * 4 + strlen(name) + strlen(TPNG) + pngname_size + sizeof(OBJXT);
 
     char* dot_to_png_command = (char*)calloc(dtpng_size, sizeof(char));
 
     snprintf(dot_to_png_command, dtpng_size, "%s%s%s%s%s%s%s%s%s", DOT, SPACE, name, SPACE, TPNG, SPACE, OBJXT,
              SPACE, pngname);
-
-    fprintf(stderr, "\n\n%s\n\n", dot_to_png_command);
-
 
     system(dot_to_png_command);
 
