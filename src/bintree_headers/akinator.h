@@ -5,7 +5,7 @@
 #include "../../lib_file_proc/file.h"
 #include "../bintree_headers/bintree.h"
 
-#define AKN_ERR(result, error) akinator_is_err(result, __FILE__, __LINE__) return error
+#define AKN_ERR(result, error) if(akinator_is_err(result, __FILE__, __LINE__) == MACRO_AK_ERR) return error
 
 
 enum Akinator_Err
@@ -15,6 +15,7 @@ enum Akinator_Err
     AKINATOR_BUFFER_CTOR_ERR       = 0x02,
     AKINATOR_BUFFER_FILE_OPEN_ERR  = 0x03,
     AKINATOR_BUFFER_FILE_CLOSE_ERR = 0x04,
+    AKINATOR_FILE_ERROR            = 0x05,
 
 
     MACRO_AK_GOOD = 0x20,
@@ -22,23 +23,15 @@ enum Akinator_Err
 
 };
 
-const char* const DATABASE = "src/database.txt";
+const ssize_t GETLINEERR = -1;
 
 
 Akinator_Err akinator_is_err(const Akinator_Err result, const char* name, const size_t line);
 
-Akinator_Err create_data_buffer(char** buffer, Tree* tree, size_t* buffer_size);
+Tree_Errors move_old_and_add_new_answer(Node* node);
 
-size_t scope_checker(const char* buffer, const size_t buffer_size, size_t* tree_size);
+Tree_Errors edit_node(Node** node, const NodeElem_t new_data, const size_t new_data_size);
 
-Akinator_Err read_tree_from_file(Tree* tree);
-
-char* find_word_begin(char* buffer, const char* bufend);
-
-void create_new_node(Node** node, char* buffer, size_t* all_bytes);
-
-Akinator_Err init_tree_nodes(Node* node, char* buffer, size_t* all_bytes);
-
-size_t get_node_data_size(const char* word_beginning);
+Tree_Errors change_recieved_leaf(Node* node);
 
 #endif // AKINATOR_H_

@@ -6,6 +6,7 @@
 #include "../bintree_headers/bintree.h"
 #include "../bintree_headers/dump.h"
 #include "../bintree_headers/akinator.h"
+#include "../bintree_headers/treeRW.h"
 
 
 int main(void)
@@ -22,6 +23,8 @@ int main(void)
     make_html_file(General_Dump.HTML_DUMP);
     dot_to_png(General_Dump.GRAPHIC_DUMP, &General_Dump);
     close_file_html(General_Dump.HTML_DUMP);
+
+    AKN_ERR(write_tree_to_file(tree.root, "penis.txt"), AKINATOR_FILE_ERROR);
 
     tree_branch_dtor(tree.root);
     free(tree.buffer);

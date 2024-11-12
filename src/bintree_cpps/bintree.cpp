@@ -1,10 +1,11 @@
+#include "../bintree_headers/bintree.h"
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
 
-#include "../bintree_headers/bintree.h"
-
+#include "../../lib_file_proc/file.h"
+#include "../../lib_buffer_proc/buffer.h"
 
 Tree_Errors insert(Node* node, NodeElem_t elem)
 {
@@ -39,21 +40,17 @@ Tree_Errors node_init(Node** node, const NodeElem_t elem, const size_t elem_size
     assert(!*node);
 
     Node* new_node = (Node*)calloc(sizeof(Node), 1);
-
     new_node->left  = nullptr;
     new_node->right = nullptr;
 
     *node = new_node;
-
     (*node)->data = elem;
-
     (*node)->data_size = elem_size;
 
     if((*node)->left != nullptr || (*node)->right != nullptr)
     {
         return NODE_INIT_ERR;
     }
-
 
     return NODE_IS_OKAY;
 }

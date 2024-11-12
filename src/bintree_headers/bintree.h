@@ -3,9 +3,7 @@
 
 #include <stdio.h>
 
-
 #define NODE_ERR(result, error) if(tree_is_err(result, __FILE__, __LINE__) == MACRO_ERR) return error
-
 
 typedef char* NodeElem_t;
 
@@ -35,12 +33,17 @@ enum Tree_Errors
     NODE_FIND_ERR   = 0x02,
     NODE_INIT_ERR   = 0x03,
     NODE_INSERT_ERR = 0x04,
+    NEWNODE_CRE_ERR = 0x05,
+    NODE_IS_BRANCH  = 0x06,
+    DENY_TO_EDIT    = 0x07,
 
 
     MACRO_ERR  = 0x20,
     MACRO_GOOD = 0x30,
 
 };
+
+const char* const DATABASE = "src/database.txt";
 
 
 Tree_Errors insert(Node* node, NodeElem_t elem);
