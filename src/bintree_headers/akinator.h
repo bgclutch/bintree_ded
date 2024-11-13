@@ -34,9 +34,8 @@ const char* const COMPAREMODE  = "--compare";
 const char* const GETDEFINE    = "--define";
 const char* const INSTRUCTIONS = "-h";
 
-const char* const YESANSWER = "y";
-const char* const NOANSWER  = "n";
-const char* const ANSPTR    = "p";
+const char* const YESANSWER = "yes";
+const char* const NOANSWER  = "no";
 
 const ssize_t GETLINEERR = -1;
 
@@ -51,9 +50,9 @@ Tree_Errors change_recieved_leaf(Node* node);
 
 void gamestart(Node* root);
 
-void akinator_func(Node* node, Node* answer_node);
+void akinator_func(Node* node, Node** answer_node);
 
-Akinator_Answer get_simple_answer();
+char* get_user_answer();
 
 void clean_buffer();
 

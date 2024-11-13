@@ -35,7 +35,7 @@ int main(int argc, char** argv)
     // {
     //     getdefine();
     // }
-    // else
+    else
     {
         print_akinator_instruction();
         fprintf(stderr, "try again!\n");

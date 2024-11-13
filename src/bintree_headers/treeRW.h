@@ -4,7 +4,6 @@
 #include "../bintree_headers/bintree.h"
 #include "../bintree_headers/akinator.h"
 
-static const size_t  REALLOC_ADDITION = 2 * sizeof('{');
 
 Akinator_Err create_data_buffer(char** buffer, Tree* tree, size_t* buffer_size);
 
@@ -22,8 +21,8 @@ size_t get_node_data_size(const char* word_beginning);
 
 Akinator_Err write_tree_to_file(Node* root, const char* outpfilename);
 
-void write_nodes_to_buffer(Node* node, char* buffer, size_t* current_pos, size_t* prefix_sum, FILE* file);
+void write_nodes_to_file(Node* node, FILE* file);
 
-Akinator_Err write_tree_to_buffer(Node* root, char* buffer, size_t* current_pos, FILE* file);
+Akinator_Err write_tree_to_file(Node* root, FILE* file);
 
 #endif // TREERW_H_

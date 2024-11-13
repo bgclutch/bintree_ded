@@ -32,15 +32,18 @@ Tree_Errors move_old_and_add_new_answer(Node* node)
     NODE_ERR(node_init(&node->left, node->data, node->data_size), NODE_INIT_ERR);
     node->left->parent = node;                           // move old answer
 
+    fprintf(stderr, "moldata:%p\n", node->left->data);
+
     char* new_answer_data = nullptr;
     fprintf(stderr, "\nplease, input your expected object:\n");
-    clean_buffer();
-    ssize_t new_answer_size = getline(&new_answer_data, NULL, stdin);
+    size_t new_answer_size = 0;
 
-    if(new_answer_size == GETLINEERR)
+    if(getline(&new_answer_data, &new_answer_size, stdin) == GETLINEERR)
         return NEWNODE_CRE_ERR;
 
-    NODE_ERR(node_init(&node->right, new_answer_data, (size_t)new_answer_size), NODE_INIT_ERR);
+    new_answer_size = strlen(new_answer_data) - 1;
+
+    NODE_ERR(node_init(&node->right, new_answer_data, new_answer_size), NODE_INIT_ERR);
     node->right->parent = node;
 
     return NODE_IS_OKAY;
@@ -57,15 +60,15 @@ Tree_Errors change_recieved_leaf(Node* node)
     move_old_and_add_new_answer(node);
 
     char* new_branch_data = nullptr;
-    fprintf(stderr, "\nplease, input difference between wrong(old) and right(new) answers:\n");
-    clean_buffer();
-    ssize_t new_branch_size = getline(&new_branch_data, NULL, stdin);
+    fprintf(stderr, "\nplease, input difference between wrong(old) and right(new) answers(w/o '?' sign):\n");
+    size_t new_branch_size = 0;
 
-    if(new_branch_size == -1)
+    if(getline(&new_branch_data, &new_branch_size, stdin) == -1)
         return NEWNODE_CRE_ERR;
 
-    NODE_ERR(edit_node(&node, new_branch_data, (size_t)new_branch_size), DENY_TO_EDIT);
+    new_branch_size = strlen(new_branch_data) - 1;
 
+    NODE_ERR(edit_node(&node, new_branch_data, new_branch_size), DENY_TO_EDIT);
     return NODE_IS_OKAY;
 }
 
@@ -76,14 +79,14 @@ Tree_Errors edit_node(Node** node, const NodeElem_t new_data, const size_t new_d
     assert((*node)->left);
     assert((*node)->right);
 
-    if(*node != (*node)->left)
+    if((*node)->data != (*node)->left->data)
         return DENY_TO_EDIT;
 
     if(!(*node)->left || !(*node)->right)
         return DENY_TO_EDIT;
 
-    memcpy((*node)->data, new_data, new_data_size);
-
+    fprintf(stderr, "edit node:%p\n", (*node)->data);
+    (*node)->data = new_data;
     (*node)->data_size = new_data_size;
 
     return NODE_IS_OKAY;
@@ -94,20 +97,20 @@ void gamestart(Node* root)
 {
     Node* answer_node = (Node*)calloc(sizeof(Node), 1);
 
-    akinator_func(root, answer_node);
+    akinator_func(root, &answer_node);
     assert(answer_node);
 
     fprintf(stderr, "\nam i right?");
-    Akinator_Answer answers = get_simple_answer();
+    char* answer = get_user_answer();
 
-    if(!answers.yesanswer)
+    if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
     {
         fprintf(stderr, "i hope you enjoy being ");
         for(size_t i = strlen("you are "); i < answer_node->data_size; i++)
             fprintf(stderr, "%c", answer_node->data[i]);
         fprintf(stderr, "!\n");
     }
-    else if(!answers.noanswer)
+    else if(!strncmp(answer, NOANSWER, strlen(NOANSWER)))
     {
         change_recieved_leaf(answer_node);
         fprintf(stderr, "thank you! now i know more about matvey\n");
@@ -118,14 +121,19 @@ void gamestart(Node* root)
     }
 
     fprintf(stderr, "do you want to play again?\n");
-    Akinator_Answer continue_or_finish = get_simple_answer();
+    answer = get_user_answer();
 
-    if(!continue_or_finish.yesanswer)
+    if(!strncmp(answer, YESANSWER, strlen(answer)))
+    {
+        free(answer);
+        free(answer_node);
         gamestart(root);
+    }
     else
+    {
+        free(answer);
         fprintf(stderr, "good luck!\n");
-
-    free(answer_node);
+    }
 
     return;
 }
@@ -143,56 +151,59 @@ void gamestart(Node* root)
 // }
 
 
-void akinator_func(Node* node, Node* answer_node)
+void akinator_func(Node* node, Node** answer_node)
 {
+    assert(node);
+    assert(answer_node);
 
     for(size_t i = 0; i < node->data_size; i++)
         fprintf(stderr, "%c", node->data[i]);
 
     if(!node->left && !node->right)
     {
-        answer_node = node;
+        *answer_node = node;
         return;
     }
 
-    Akinator_Answer answers = get_simple_answer();
+    char* answer = get_user_answer();
 
-    if(!answers.yesanswer)
+    if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
+    {
+        free(answer);
         akinator_func(node->right, answer_node);
-    else if(!answers.noanswer)
+    }
+    else if(!strncmp(answer, NOANSWER, strlen(NOANSWER)))
+    {
+        free(answer);
         akinator_func(node->left, answer_node);
+    }
     else // default
+    {
         assert(0);
+    }
 
     return;
 }
 
 
-Akinator_Answer get_simple_answer()
+char* get_user_answer()
 {
-    char ans = '0';
-    char* answer = &ans;
-    memcpy(&answer, ANSPTR, sizeof(char));
-    fprintf(stderr, "\ninput 1 symbol[y/n]\n");
-    clean_buffer();
-    getline(&answer, NULL, stdin);
-    Akinator_Answer answers = {};
-    fprintf(stderr, "yes %s// answ %d\n", YESANSWER, *answer);
+    fprintf(stderr, "[yes/no]\n");
+    char* userinput = nullptr;
+    size_t userinputsize = 0;
 
-    answers.yesanswer = strncmp(answer, YESANSWER, strlen(YESANSWER));
-    answers.noanswer  = strncmp(answer, NOANSWER,  strlen(NOANSWER));
-    fprintf(stderr, "y %d n %d\n", answers.yesanswer, answers.noanswer);
+    if(getline(&userinput, &userinputsize, stdin) == GETLINEERR)
+        return nullptr;
 
-    while((answers.yesanswer = strncmp(answer, YESANSWER, strlen(YESANSWER)))  != 0 ||
-          (answers.noanswer  = strncmp(answer, NOANSWER,  strlen(NOANSWER)))   != 0)
+    while(strncmp(userinput, YESANSWER, strlen(YESANSWER)) &&
+          strncmp(userinput, NOANSWER,  strlen(NOANSWER)))
     {
-        printf("try again!\n");
-        clean_buffer();
-        getline(&answer, NULL, stdin);
-        fprintf(stderr, "yes %s// answ %d\n", YESANSWER, *answer);
-
+        fprintf(stderr, "try again!\n");
+        if(getline(&userinput, &userinputsize, stdin) == GETLINEERR)
+            return nullptr;
     }
-    return answers;
+
+    return userinput;
 }
 
 

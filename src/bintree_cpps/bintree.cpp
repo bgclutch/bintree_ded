@@ -155,6 +155,8 @@ void tree_branch_dtor(Node* node)
         tree_branch_dtor(node->right);
     }
 
+    free(node->data);
+    node->data = nullptr;
     free(node);
 
     return;

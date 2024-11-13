@@ -189,92 +189,58 @@ Akinator_Err write_tree_to_file(Node* root, const char* outputfilename)
     if(file_write_open(&write_tree_file, outputfilename) == FILE_W_OPEN_ERR)
         return AKINATOR_FILE_ERROR;
 
-    char* buffer = nullptr;
-    size_t current_pos = 0;
-    write_tree_to_buffer(root, buffer, &current_pos, write_tree_file);
-
-    //fwrite(buffer, current_pos, sizeof(char), write_tree_file);
-    free(buffer);
-
+    write_tree_to_file(root, write_tree_file);
     file_close(write_tree_file);
 
     return AKINATOR_STILL_ALIVE;
 }
 
 
-Akinator_Err write_tree_to_buffer(Node* root, char* buffer, size_t* current_pos, FILE* file) // FIXME WTF REALLOC
+Akinator_Err write_tree_to_file(Node* root, FILE* file) // FIXME WTF REALLOC
 {
     assert(root);
-    assert(!buffer);
+    assert(file);
 
-    size_t prefix_sum = REALLOC_ADDITION + sizeof('\0');
-    // buffer = (char*)calloc(root->data_size + prefix_sum, sizeof(char)); // root node to buffer (const instead of 3?)
-    // buffer[(*current_pos)++] = '{';
     fprintf(file, "{");
-
-
-    // strncpy(buffer + *current_pos, root->data, root->data_size);
-    *current_pos += root->data_size;
 
     for(size_t i = 0; i < root->data_size; i++)
         fprintf(file, "%c", root->data[i]);
 
-    write_nodes_to_buffer(root->left,  buffer, current_pos, &prefix_sum, file);
-    write_nodes_to_buffer(root->right, buffer, current_pos, &prefix_sum, file);
+    write_nodes_to_file(root->left,  file);
+    write_nodes_to_file(root->right, file);
 
-    // buffer[(*current_pos)++] = '}';
     fprintf(file, "}");
     return AKINATOR_STILL_ALIVE;
 }
 
 
-void write_nodes_to_buffer(Node* node, char* buffer, size_t* current_pos, size_t* prefix_sum, FILE* file)
+void write_nodes_to_file(Node* node, FILE* file)
 {
     assert(node);
-    //assert(buffer);
-    assert(current_pos);
-    assert(prefix_sum);
 
     fprintf(file, "{");
-    *prefix_sum += REALLOC_ADDITION;
-    // fprintf(stderr, "realloc size:%lu\n", (*prefix_sum + *current_pos + node->data_size));
-    // fprintf(stderr, "node:%p node left:%p node right:%p", node, node->left, node->right);
-    // fprintf(stderr, "word size:%lu cur pos:%lu prefix sum:%lu\n", node->data_size, *current_pos, *prefix_sum);
-    // fprintf(stderr, "buffer %p\n", buffer);
-    // fprintf(stderr, "%s %lu\n", buffer, strlen(buffer));
 
-    // char* new_buffer = (char*)realloc(buffer, *current_pos + node->data_size + *prefix_sum);
-
-        // if(new_buffer)
-        //     buffer = new_buffer;
-        // else
-        //     assert(0);
-
-
-    // memset(buffer + *current_pos + node->data_size, '\0', *prefix_sum);
+    fprintf(stderr, "%lu", node->data_size);
 
     for(size_t i = 0; i < node->data_size; i++)
+    {
         fprintf(file, "%c", node->data[i]);
+        fprintf(stderr, "%c", node->data[i]);
 
-    // buffer[(*current_pos)++] = '{';
-
-    // memcpy(buffer + *current_pos, node->data, node->data_size);
-    *current_pos += node->data_size;
+    }
 
     if(!node->left && !node->right)
     {
-        // buffer[(*current_pos)++] = '}';
         fprintf(file, "}");
 
         return;
     }
     else
     {
-        write_nodes_to_buffer(node->left,  buffer, current_pos, prefix_sum, file);
-        write_nodes_to_buffer(node->right, buffer, current_pos, prefix_sum, file);
+        write_nodes_to_file(node->left,  file);
+        write_nodes_to_file(node->right, file);
     }
 
     fprintf(file, "}");
-    //buffer[(*current_pos)++] = '}';
     return;
 }
