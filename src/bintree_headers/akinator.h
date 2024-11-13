@@ -23,6 +23,21 @@ enum Akinator_Err
 
 };
 
+struct Akinator_Answer
+{
+    int yesanswer = -1;
+    int noanswer  = -1;
+};
+
+const char* const GAMEMODE     = "--play";
+const char* const COMPAREMODE  = "--compare";
+const char* const GETDEFINE    = "--define";
+const char* const INSTRUCTIONS = "-h";
+
+const char* const YESANSWER = "y";
+const char* const NOANSWER  = "n";
+const char* const ANSPTR    = "p";
+
 const ssize_t GETLINEERR = -1;
 
 
@@ -33,5 +48,13 @@ Tree_Errors move_old_and_add_new_answer(Node* node);
 Tree_Errors edit_node(Node** node, const NodeElem_t new_data, const size_t new_data_size);
 
 Tree_Errors change_recieved_leaf(Node* node);
+
+void gamestart(Node* root);
+
+void akinator_func(Node* node, Node* answer_node);
+
+Akinator_Answer get_simple_answer();
+
+void clean_buffer();
 
 #endif // AKINATOR_H_

@@ -29,7 +29,7 @@ Dump_Errors prepare_graphic_file(const Dump_St General_Dump)
             "margin = 1;\n"
             "ranksep = 1;\n"
             "nodesep = 3;\n"
-            "bgcolor = \"#aedeb0\";\n", DMPPIC);
+            "bgcolor = \"#aedeb0\";\n", CATPIC);
 
     if(fclose(graph_dump_file))
         return DUMP_FILE_CLOSE_ERR;
@@ -185,7 +185,7 @@ void dot_to_png(const char* name, Dump_St* General_Dump)
 
     system(dot_to_png_command);
 
-    fill_file_html(General_Dump->HTML_DUMP, pngname + sizeof(PATH) + 3);
+    // fill_file_html(General_Dump->HTML_DUMP, pngname + sizeof(PATH) + 3);
 
     General_Dump->filenum++;
 
@@ -276,4 +276,42 @@ void print_to_dump_file(const Node* node, FILE* dump_file, const Colors color)
     fprintf(dump_file, "</td></tr>\n"
                        "<tr><td align = \"center\" >Left:%p</td><td align = \"center\" >Right:%p</td></tr></table>>];\n\n",
                        node->left, node->right);
+}
+
+
+Dump_Errors create_png(Dump_St* General_Dump, Node* root)
+{
+    DUMP_ERR(prepare_graphic_file(*General_Dump), DUMP_TO_PNG_ERR);
+    graphic_dump(root, General_Dump);
+    close_graphic_dump(*General_Dump);
+    dot_to_png(General_Dump->GRAPHIC_DUMP, General_Dump);
+
+    return DUMP_IS_OKAY;
+}
+
+void create_html(Dump_St General_Dump)
+{
+    make_html_file(General_Dump.HTML_DUMP);
+    size_t pngname_size = strlen("graph_dump0.png ");
+    char* pngname = (char*)calloc(sizeof(char), pngname_size);
+    for(int i = 0; i < General_Dump.filenum; i++)
+    {
+        snprintf(pngname, pngname_size, "%s%d%s", "graph_dump", i, ".png");
+        fill_file_html(General_Dump.HTML_DUMP, pngname);
+    }
+    free(pngname);
+    close_file_html(General_Dump.HTML_DUMP);
+}
+
+
+void print_akinator_instruction()
+{
+    fprintf(stderr,
+            "welcome to the \"which matvey are you\" game!\n"
+            "here you can get your matvey portrait from many different questions\n"
+            "if you want to play, start the program with \"./bintree --play\"\n"
+            "if you need definition of matvey's condition input \"./bintree --define\"\n"
+            "if you want to compare definitions input \"./bintree --compare\"\n"
+            "and if you need help input\"./bintree --h\"\n"
+            "enjoy)");
 }

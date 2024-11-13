@@ -9,26 +9,50 @@
 #include "../bintree_headers/treeRW.h"
 
 
-int main(void)
+int main(int argc, char** argv)
 {
+    if(argc < 2 || strcmp(argv[1], INSTRUCTIONS) == 0)
+    {
+        print_akinator_instruction();
+        return 0;
+    }
+
     Tree tree = {};
-
     read_tree_from_file(&tree);
-
     Dump_St General_Dump = {};
 
-    prepare_graphic_file(General_Dump);
-    graphic_dump(tree.root, &General_Dump);
-    close_graphic_dump(General_Dump);
-    make_html_file(General_Dump.HTML_DUMP);
-    dot_to_png(General_Dump.GRAPHIC_DUMP, &General_Dump);
-    close_file_html(General_Dump.HTML_DUMP);
+    if(strcmp(argv[1], GAMEMODE) == 0)
+    {
+        create_png(&General_Dump, tree.root);
+        gamestart(tree.root);
+        create_png(&General_Dump, tree.root);
+    }
+    // else if(strcmp(argv[2], COMPAREMODE) == 0)
+    // {
+    //     comparestart();
+    // }
+    // else if(strcmp(argv[2], GETDEFINE) == 0)
+    // {
+    //     getdefine();
+    // }
+    // else
+    {
+        print_akinator_instruction();
+        fprintf(stderr, "try again!\n");
+        return 0;
+    }
 
-    AKN_ERR(write_tree_to_file(tree.root, "penis.txt"), AKINATOR_FILE_ERROR);
 
-    tree_branch_dtor(tree.root);
+
+
+
+
+
+
+    AKN_ERR(write_tree_to_file(tree.root, DATABASE), AKINATOR_FILE_ERROR);
     free(tree.buffer);
-
+    tree_branch_dtor(tree.root);
+    create_html(General_Dump);
 
     return 0;
 }

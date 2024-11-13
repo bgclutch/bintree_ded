@@ -16,11 +16,11 @@ static const char* const OBJXT  = "-o";
 static const char* const HTMLXT = ".html";
 static const char* const PNGXT  = ".png";
 static const char* const TPNG   = "-Tpng";
-static const char* const DMPPIC = "dumps/html/dump_monya.png";
+static const char* const CATPIC = "dumps/html/dump_monya.png";
 
 
 
-#define DUMP_ERR(result, error) if(dump_is_err(result, __FILE__, __LINE__) == MACRO_ERR) return error
+#define DUMP_ERR(result, error) if(dump_is_err(result, __FILE__, __LINE__) == MACRO_DUMP_ERR) return error
 
 struct Dump_St
 {
@@ -35,6 +35,7 @@ enum Dump_Errors
     DUMP_IS_OKAY        = 0x00,
     DUMP_FILE_OPEN_ERR  = 0x01,
     DUMP_FILE_CLOSE_ERR = 0x02,
+    DUMP_TO_PNG_ERR     = 0x03,
 
     MACRO_DUMP_GOOD = 0x20,
     MACRO_DUMP_ERR  = 0x30,
@@ -74,5 +75,11 @@ void make_html_file(const char* filename);
 void fill_file_html(const char* filename, const char* pngname);
 
 void close_file_html(const char* filename);
+
+void create_html(Dump_St General_Dump);
+
+Dump_Errors create_png(Dump_St* General_Dump, Node* root);
+
+void print_akinator_instruction();
 
 #endif // DUMP_H_

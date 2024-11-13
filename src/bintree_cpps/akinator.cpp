@@ -34,6 +34,7 @@ Tree_Errors move_old_and_add_new_answer(Node* node)
 
     char* new_answer_data = nullptr;
     fprintf(stderr, "\nplease, input your expected object:\n");
+    clean_buffer();
     ssize_t new_answer_size = getline(&new_answer_data, NULL, stdin);
 
     if(new_answer_size == GETLINEERR)
@@ -57,6 +58,7 @@ Tree_Errors change_recieved_leaf(Node* node)
 
     char* new_branch_data = nullptr;
     fprintf(stderr, "\nplease, input difference between wrong(old) and right(new) answers:\n");
+    clean_buffer();
     ssize_t new_branch_size = getline(&new_branch_data, NULL, stdin);
 
     if(new_branch_size == -1)
@@ -85,4 +87,117 @@ Tree_Errors edit_node(Node** node, const NodeElem_t new_data, const size_t new_d
     (*node)->data_size = new_data_size;
 
     return NODE_IS_OKAY;
+}
+
+
+void gamestart(Node* root)
+{
+    Node* answer_node = (Node*)calloc(sizeof(Node), 1);
+
+    akinator_func(root, answer_node);
+    assert(answer_node);
+
+    fprintf(stderr, "\nam i right?");
+    Akinator_Answer answers = get_simple_answer();
+
+    if(!answers.yesanswer)
+    {
+        fprintf(stderr, "i hope you enjoy being ");
+        for(size_t i = strlen("you are "); i < answer_node->data_size; i++)
+            fprintf(stderr, "%c", answer_node->data[i]);
+        fprintf(stderr, "!\n");
+    }
+    else if(!answers.noanswer)
+    {
+        change_recieved_leaf(answer_node);
+        fprintf(stderr, "thank you! now i know more about matvey\n");
+    }
+    else
+    {
+        assert(0);
+    }
+
+    fprintf(stderr, "do you want to play again?\n");
+    Akinator_Answer continue_or_finish = get_simple_answer();
+
+    if(!continue_or_finish.yesanswer)
+        gamestart(root);
+    else
+        fprintf(stderr, "good luck!\n");
+
+    free(answer_node);
+
+    return;
+}
+
+
+// Akinator_Err comparestart(Node* root)
+// {
+
+// }
+
+
+// Akinator_Err getdefine(Node* root)
+// {
+
+// }
+
+
+void akinator_func(Node* node, Node* answer_node)
+{
+
+    for(size_t i = 0; i < node->data_size; i++)
+        fprintf(stderr, "%c", node->data[i]);
+
+    if(!node->left && !node->right)
+    {
+        answer_node = node;
+        return;
+    }
+
+    Akinator_Answer answers = get_simple_answer();
+
+    if(!answers.yesanswer)
+        akinator_func(node->right, answer_node);
+    else if(!answers.noanswer)
+        akinator_func(node->left, answer_node);
+    else // default
+        assert(0);
+
+    return;
+}
+
+
+Akinator_Answer get_simple_answer()
+{
+    char ans = '0';
+    char* answer = &ans;
+    memcpy(&answer, ANSPTR, sizeof(char));
+    fprintf(stderr, "\ninput 1 symbol[y/n]\n");
+    clean_buffer();
+    getline(&answer, NULL, stdin);
+    Akinator_Answer answers = {};
+    fprintf(stderr, "yes %s// answ %d\n", YESANSWER, *answer);
+
+    answers.yesanswer = strncmp(answer, YESANSWER, strlen(YESANSWER));
+    answers.noanswer  = strncmp(answer, NOANSWER,  strlen(NOANSWER));
+    fprintf(stderr, "y %d n %d\n", answers.yesanswer, answers.noanswer);
+
+    while((answers.yesanswer = strncmp(answer, YESANSWER, strlen(YESANSWER)))  != 0 ||
+          (answers.noanswer  = strncmp(answer, NOANSWER,  strlen(NOANSWER)))   != 0)
+    {
+        printf("try again!\n");
+        clean_buffer();
+        getline(&answer, NULL, stdin);
+        fprintf(stderr, "yes %s// answ %d\n", YESANSWER, *answer);
+
+    }
+    return answers;
+}
+
+
+void clean_buffer()
+{
+    int bufsymb = 0;
+    while((bufsymb = getchar()) != '\n');
 }

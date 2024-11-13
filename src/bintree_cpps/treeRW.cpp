@@ -198,8 +198,6 @@ Akinator_Err write_tree_to_file(Node* root, const char* outputfilename)
 
     file_close(write_tree_file);
 
-    fprintf(stderr, "wttf PENIS\n\n");
-
     return AKINATOR_STILL_ALIVE;
 }
 
@@ -226,10 +224,6 @@ Akinator_Err write_tree_to_buffer(Node* root, char* buffer, size_t* current_pos,
 
     // buffer[(*current_pos)++] = '}';
     fprintf(file, "}");
-
-    fprintf(stderr, "wttb PENIS\n\n");
-
-
     return AKINATOR_STILL_ALIVE;
 }
 
@@ -280,10 +274,7 @@ void write_nodes_to_buffer(Node* node, char* buffer, size_t* current_pos, size_t
         write_nodes_to_buffer(node->right, buffer, current_pos, prefix_sum, file);
     }
 
-    fprintf(stderr, "wntb PENIS\n\n");
     fprintf(file, "}");
     //buffer[(*current_pos)++] = '}';
-    fprintf(stderr, "%s\n\n", buffer);
-
     return;
 }
