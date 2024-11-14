@@ -144,10 +144,10 @@ void create_new_node(Node** node, char* buffer, size_t* all_bytes)
     else
     {
         create_new_node(&(*node)->left, buffer, all_bytes);
-        (*node)->left->parent = node;
+        (*node)->left->parent = *node;
 
         create_new_node(&(*node)->right, buffer, all_bytes);
-        (*node)->right->parent = node;
+        (*node)->right->parent = *node;
     }
     return;
 }
@@ -220,14 +220,8 @@ void write_nodes_to_file(Node* node, FILE* file)
 
     fprintf(file, "{");
 
-    fprintf(stderr, "%lu", node->data_size);
-
     for(size_t i = 0; i < node->data_size; i++)
-    {
         fprintf(file, "%c", node->data[i]);
-        fprintf(stderr, "%c", node->data[i]);
-
-    }
 
     if(!node->left && !node->right)
     {

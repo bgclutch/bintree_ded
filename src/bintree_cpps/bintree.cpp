@@ -6,7 +6,7 @@
 
 #include "../../lib_file_proc/file.h"
 #include "../../lib_buffer_proc/buffer.h"
-
+#if 0
 Tree_Errors insert(Node* node, NodeElem_t elem)
 {
     int node_counter = 0;
@@ -19,7 +19,7 @@ Tree_Errors insert(Node* node, NodeElem_t elem)
 
     return NODE_IS_OKAY;
 }
-
+#endif
 
 void elem_ctor(void** elem, const size_t size)
 {
@@ -55,7 +55,7 @@ Tree_Errors node_init(Node** node, const NodeElem_t elem, const size_t elem_size
     return NODE_IS_OKAY;
 }
 
-
+#if 0
 Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t comp_elem, int* node_counter)
 {
     assert(node);
@@ -111,6 +111,7 @@ Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t c
 
     return NODE_IS_OKAY;
 }
+#endif
 
 
 Tree_Errors tree_is_err(const Tree_Errors result, const char* name, const size_t line)
@@ -144,19 +145,22 @@ void tree_print(Node* node)
 }
 
 
-void tree_branch_dtor(Node* node)
+void tree_branch_dtor(Node* node, const char* data, const size_t len)
 {
     if(node->left != nullptr)
     {
-        tree_branch_dtor(node->left);
+        tree_branch_dtor(node->left, data, len);
     }
     if(node->right != nullptr)
     {
-        tree_branch_dtor(node->right);
+        tree_branch_dtor(node->right, data, len);
     }
 
-    free(node->data);
-    node->data = nullptr;
+    if(node->data < data || node->data > data + len)
+    {
+        free(node->data);
+        node->data = nullptr;
+    }
     free(node);
 
     return;

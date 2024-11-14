@@ -51,7 +51,7 @@ int main(int argc, char** argv)
 
     AKN_ERR(write_tree_to_file(tree.root, DATABASE), AKINATOR_FILE_ERROR);
     free(tree.buffer);
-    tree_branch_dtor(tree.root);
+    tree_branch_dtor(tree.root, tree.buffer, strlen(tree.buffer));
     create_html(General_Dump);
 
     return 0;

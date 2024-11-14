@@ -268,8 +268,9 @@ void print_to_dump_file(const Node* node, FILE* dump_file, const Colors color)
 
     fprintf(dump_file, ",label=<\n"
                        "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\">\n"
+                       "<tr><td colspan=\"2\">Parent:  %p</td></tr>\n"
                        "<tr><td colspan=\"2\">Address: %p</td></tr>\n"
-                       "<tr><td colspan=\"2\">", node);
+                       "<tr><td colspan=\"2\">", node->parent, node);
 
     print_data_string(node->data, node->data_size, dump_file);
 

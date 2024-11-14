@@ -52,12 +52,11 @@ Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t c
 
 Tree_Errors node_init(Node** node, const NodeElem_t elem, const size_t elem_size);
 
-void tree_branch_dtor(Node* node);
+void tree_branch_dtor(Node* node, const char* data, const size_t len);
 
 Tree_Errors tree_is_err(const Tree_Errors result, const char* name, const size_t line);
 
 void tree_print(Node* node);
-
 
 void elem_ctor(void** elem, const size_t size);
 
