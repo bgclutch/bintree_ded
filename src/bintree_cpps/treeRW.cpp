@@ -91,7 +91,6 @@ size_t scope_checker(const char* buffer, const size_t buffer_size)
 {
     assert(buffer);
 
-
     size_t counter_scope_begin = 0;
     size_t counter_scope_end   = 0;
 

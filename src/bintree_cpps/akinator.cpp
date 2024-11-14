@@ -32,8 +32,6 @@ Tree_Errors move_old_and_add_new_answer(Node* node)
     NODE_ERR(node_init(&node->left, node->data, node->data_size), NODE_INIT_ERR);
     node->left->parent = node;                               // move old answer
 
-    fprintf(stderr, "moldata:%p\n", node->left->data);
-
     char* new_answer_data = nullptr;
     fprintf(stderr, "\nplease, input your expected object:\n");
     size_t new_answer_size = 0;
@@ -121,6 +119,7 @@ void gamestart(Node* root)
         assert(0);
     }
 
+    free(answer);
     fprintf(stderr, "do you want to play again?\n");
     answer = get_user_answer();
 
