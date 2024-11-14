@@ -36,7 +36,7 @@ Tree_Errors move_old_and_add_new_answer(Node* node)
     NODE_ERR(node_init(&node->left, node->data, node->data_size), NODE_INIT_ERR);
     node->left->parent = node;                               // move old answer
 
-    fprintf(stderr, "\nplease, input your expected object(starts with 'you are' optionally):\n");
+    fprintf(stderr, "\nplease, input your expected object(w/o 'you are' ):\n");
 
     char* new_answer_data = get_user_sentence();
     if(!new_answer_data)
@@ -60,7 +60,7 @@ Tree_Errors change_recieved_leaf(Node** node)
 
     move_old_and_add_new_answer(*node);
 
-    fprintf(stderr, "\nplease, input difference between wrong(old) and right(new) answers(w/o '?' sign and starts with 'you are' optionally):\n");
+    fprintf(stderr, "\nplease, input difference between wrong(old) and right(new) answers(w/o '?' sign and w/o 'you are'):\n");
 
     char* new_branch_data = get_user_sentence();
     if(!new_branch_data)
@@ -227,6 +227,7 @@ Akinator_Err getdefine(Node* root)
 
     fprintf(stderr, BLUE_TEXT("input your word/sentence:\n"));
     char* chosen_sent = get_user_sentence();
+
     Main_Stack_Struct stack;
     ctor_stack(&stack);
 
@@ -377,6 +378,7 @@ char* get_user_answer()
     if(!userinput)
         return nullptr;
 
+
     while(strncmp(userinput, YESANSWER, strlen(YESANSWER)) &&
           strncmp(userinput, NOANSWER,  strlen(NOANSWER)))
     {
@@ -408,6 +410,12 @@ char* get_user_sentence()
         free(sentence);
         return nullptr;
     }
+
+    // for(size_t i = 0; i < size - 1; i++) // FIXME
+    // {
+    //     if(!isalnum(sentence[i]))
+    //         return nullptr;
+    // }
 
     return sentence;
 }

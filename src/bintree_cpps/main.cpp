@@ -8,6 +8,8 @@
 #include "../bintree_headers/akinator.h"
 #include "../bintree_headers/treeRW.h"
 #include "../../stack_ded/stack_headers/stack.h"
+#include "../../stack_ded/stack_headers/colorised_output.h"
+
 
 
 
@@ -15,6 +17,7 @@ int main(const int argc, const char** argv)
 {
     if(argc < 2)
     {
+        fprintf(stderr, RED_TEXT("WRONG INPUT!\n\n"));
         print_akinator_instruction();
         return EXIT_FAILURE;
     }
@@ -45,8 +48,8 @@ int main(const int argc, const char** argv)
     }
     else
     {
+        fprintf(stderr, RED_TEXT("WRONG INPUT!\n\n"));
         print_akinator_instruction();
-        fprintf(stderr, "try again!\n");
         return EXIT_FAILURE;
     }
 
