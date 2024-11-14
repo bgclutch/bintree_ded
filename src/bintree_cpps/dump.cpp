@@ -5,7 +5,7 @@
 
 #include "../../src/bintree_headers/dump.h"
 #include "../../src/bintree_headers/bintree.h"
-
+#include "../../stack_ded/stack_headers/colorised_output.h"
 
 Dump_Errors prepare_graphic_file(const Dump_St General_Dump)
 {
@@ -313,9 +313,9 @@ void print_akinator_instruction()
     fprintf(stderr,
             "welcome to the \"which matvey are you\" game!\n"
             "here you can get your matvey portrait from many different questions\n"
-            "if you want to play, start the program with \"./bintree --play\"\n"
-            "if you need definition of matvey's condition input \"./bintree --define\"\n"
-            "if you want to compare definitions input \"./bintree --compare\"\n"
-            "and if you need help input\"./bintree --h\"\n"
-            "enjoy)");
+            "if you want " YELLOW_TEXT("to play") ", start the program with " GREEN_TEXT("\"./bintree --play\"\n")
+            "if you need " BLUE_TEXT("definition of matvey's condition ") "input " GREEN_TEXT("\"./bintree --define\"\n")
+            "if you want " BLUE_TEXT("to compare definitions ") "input " GREEN_TEXT("\"./bintree --compare\"\n")
+            "and if you need " BLUE_TEXT("help ") "input " GREEN_TEXT("\"./bintree --h\"\n")
+            "enjoy)\n");
 }

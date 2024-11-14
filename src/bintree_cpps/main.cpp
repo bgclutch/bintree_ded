@@ -13,10 +13,10 @@
 
 int main(const int argc, const char** argv)
 {
-    if(argc < 2 || strcmp(argv[1], INSTRUCTIONS) == 0)
+    if(argc < 2)
     {
         print_akinator_instruction();
-        return 0;
+        return EXIT_FAILURE;
     }
 
     Tree tree = {};
@@ -25,31 +25,30 @@ int main(const int argc, const char** argv)
 
     if(strcmp(argv[1], GAMEMODE) == 0)
     {
-        create_png(&General_Dump, tree.root);
         gamestart(tree.root);
         create_png(&General_Dump, tree.root);
     }
-    // else if(strcmp(argv[2], COMPAREMODE) == 0)
-    // {
-    //     comparestart();
-    // }
+    else if(strcmp(argv[1], COMPAREMODE) == 0)
+    {
+        comparestart(tree.root);
+        create_png(&General_Dump, tree.root);
+    }
     else if(strcmp(argv[1], GETDEFINE) == 0)
     {
         getdefine(tree.root);
         create_png(&General_Dump, tree.root);
     }
+    else if(strcmp(argv[1], INSTRUCTIONS) == 0)
+    {
+        print_akinator_instruction();
+        return EXIT_FAILURE;
+    }
     else
     {
         print_akinator_instruction();
         fprintf(stderr, "try again!\n");
-        return 0;
+        return EXIT_FAILURE;
     }
-
-
-
-
-
-
 
 
     AKN_ERR(write_tree_to_file(tree.root, DATABASE), AKINATOR_FILE_ERROR);
@@ -57,5 +56,5 @@ int main(const int argc, const char** argv)
     free(tree.buffer);
     create_html(General_Dump);
 
-    return 0;
+    return EXIT_SUCCESS;
 }

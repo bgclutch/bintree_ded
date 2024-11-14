@@ -42,6 +42,12 @@ const char* const NOANSWER  = "no";
 
 const ssize_t GETLINEERR = -1;
 
+enum Find_Res
+{
+    NOTFOUND = -1,
+    FOUND    =  0,
+};
+
 
 Akinator_Err akinator_is_err(const Akinator_Err result, const char* name, const size_t line);
 
@@ -55,13 +61,17 @@ void gamestart(Node* root);
 
 void akinator_func(Node* node, Node** answer_node);
 
-void find_define(Node* node, const char* word, int* retval, Main_Stack_Struct* stack);
+void find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Struct* stack);
 
 Akinator_Err getdefine(Node* root);
 
 void print_definition(Main_Stack_Struct* stack);
 
+Akinator_Err comparestart(Node* root);
+
 char* get_user_answer();
+
+char* get_user_sentence();
 
 void clean_buffer();
 

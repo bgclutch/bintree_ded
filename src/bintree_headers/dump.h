@@ -7,6 +7,7 @@
 #include "../../src/bintree_headers/bintree.h"
 
 
+
 static const char* const PATH   = "dumps/html/";
 static const char* const GRAPH  = "graph_dump";
 static const char* const DOT    = "dot";
