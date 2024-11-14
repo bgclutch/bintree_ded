@@ -9,6 +9,10 @@
 #include "../bintree_headers/dump.h"
 #include "../../lib_file_proc/file.h"
 #include "../../lib_buffer_proc/buffer.h"
+// #include "../../stack_ded/stack_headers/stack.h"
+
+
+static char NOTSTRING[] = "not";
 
 
 Akinator_Err akinator_is_err(const Akinator_Err result, const char* name, const size_t line)
@@ -83,7 +87,6 @@ Tree_Errors edit_node(Node** node, const NodeElem_t new_data, const size_t new_d
     if(!(*node)->left || !(*node)->right)
         return DENY_TO_EDIT;
 
-    fprintf(stderr, "edit node:%p\n", (*node)->data);
     (*node)->data = new_data;
     (*node)->data_size = new_data_size;
 
@@ -94,8 +97,6 @@ Tree_Errors edit_node(Node** node, const NodeElem_t new_data, const size_t new_d
 void gamestart(Node* root)
 {
     Node** answer_node = (Node**)calloc(sizeof(Node*), 1);
-    fprintf(stderr, "ansnode %p\n", answer_node);
-
     akinator_func(root, answer_node);
     assert(answer_node);
 
@@ -105,7 +106,7 @@ void gamestart(Node* root)
     if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
     {
         fprintf(stderr, "i hope you enjoy being ");
-        for(size_t i = strlen("you are "); i < (*answer_node)->data_size; i++)
+        for(size_t i = 0; i < (*answer_node)->data_size; i++)
             fprintf(stderr, "%c", (*answer_node)->data[i]);
         fprintf(stderr, "!\n");
     }
@@ -123,7 +124,7 @@ void gamestart(Node* root)
     fprintf(stderr, "do you want to play again?\n");
     answer = get_user_answer();
 
-    if(!strncmp(answer, YESANSWER, strlen(answer)))
+    if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
     {
         free(answer);
         free(answer_node);
@@ -146,10 +147,100 @@ void gamestart(Node* root)
 // }
 
 
-// Akinator_Err getdefine(Node* root)
-// {
 
-// }
+Akinator_Err getdefine(Node* root)
+{
+    assert(root);
+
+    fprintf(stderr, "input your word\n");
+    char* chosen_word = nullptr;
+    size_t chosen_word_size = 0;
+    if(getline(&chosen_word, &chosen_word_size, stdin) == GETLINEERR)
+    {
+        free(chosen_word);
+        return CHOSEN_WORD_GETLINE_ERR;
+    }
+    Main_Stack_Struct stack;
+    ctor_stack(&stack);
+
+    int retval = -1;
+
+    find_word(root, chosen_word, &retval, &stack);
+
+    if(retval == 0)
+    {
+        fprintf(stderr, "DEFINITION IS HERE\n");
+        print_definition(&stack);
+    }
+    else
+    {
+        fprintf(stderr, "NO DEFINE TODAY\n");
+    }
+
+    free(chosen_word);
+    dtor_stack(&stack);
+    return AKINATOR_STILL_ALIVE;
+}
+
+
+void find_word(Node* node, const char* word, int* retval, Main_Stack_Struct* stack)
+{
+    char* pop_elem = 0;
+
+    stack_push(stack, node->data);
+
+    if(strncmp(node->data, word, node->data_size) == 0)
+    {
+        *retval = 0;
+        stack_pop(stack, &pop_elem);
+    }
+
+    if(!node->left && !node->right)
+        return;
+
+    if(*retval == 0)
+    {
+        return;
+    }
+    else
+    {
+        stack_push(stack, NOTSTRING);
+        find_word(node->left, word, retval, stack);
+    }
+    if(*retval != 0)
+    {
+        stack_pop(stack, &pop_elem);
+        stack_pop(stack, &pop_elem);
+    }
+
+    if(*retval == 0)
+    {
+        return;
+    }
+    else
+    {
+        find_word(node->right, word, retval, stack);
+    }
+
+     if(*retval != 0)
+    {
+        stack_pop(stack, &pop_elem);
+    }
+
+    return;
+}
+
+void print_definition(Main_Stack_Struct* stack)
+{
+    while(stack->size > 0)
+    {
+        char* elem = nullptr;
+        stack_pop(stack, &elem);
+        for(int i = 0; elem[i] != '}' && elem[i] != '{' && elem[i] != '\0'; i++)
+            fprintf(stderr, "%c", elem[i]);
+        fprintf(stderr, "\n");
+    }
+}
 
 
 void akinator_func(Node* node, Node** answer_node)

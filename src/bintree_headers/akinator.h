@@ -4,6 +4,8 @@
 #include "../../lib_buffer_proc/buffer.h"
 #include "../../lib_file_proc/file.h"
 #include "../bintree_headers/bintree.h"
+#include "../../stack_ded/stack_headers/stack.h"
+
 
 #define AKN_ERR(result, error) if(akinator_is_err(result, __FILE__, __LINE__) == MACRO_AK_ERR) return error
 
@@ -16,6 +18,7 @@ enum Akinator_Err
     AKINATOR_BUFFER_FILE_OPEN_ERR  = 0x03,
     AKINATOR_BUFFER_FILE_CLOSE_ERR = 0x04,
     AKINATOR_FILE_ERROR            = 0x05,
+    CHOSEN_WORD_GETLINE_ERR        = 0x06,
 
 
     MACRO_AK_GOOD = 0x20,
@@ -51,6 +54,12 @@ Tree_Errors change_recieved_leaf(Node** node);
 void gamestart(Node* root);
 
 void akinator_func(Node* node, Node** answer_node);
+
+void find_word(Node* node, const char* word, int* retval, Main_Stack_Struct* stack);
+
+Akinator_Err getdefine(Node* root);
+
+void print_definition(Main_Stack_Struct* stack);
 
 char* get_user_answer();
 

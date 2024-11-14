@@ -7,6 +7,8 @@
 #include "../bintree_headers/dump.h"
 #include "../bintree_headers/akinator.h"
 #include "../bintree_headers/treeRW.h"
+#include "../../stack_ded/stack_headers/stack.h"
+
 
 
 int main(const int argc, const char** argv)
@@ -31,10 +33,10 @@ int main(const int argc, const char** argv)
     // {
     //     comparestart();
     // }
-    // else if(strcmp(argv[2], GETDEFINE) == 0)
-    // {
-    //     getdefine();
-    // }
+    else if(strcmp(argv[1], GETDEFINE) == 0)
+    {
+        getdefine(tree.root);
+    }
     else
     {
         print_akinator_instruction();
