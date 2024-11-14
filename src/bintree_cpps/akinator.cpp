@@ -12,7 +12,7 @@
 // #include "../../stack_ded/stack_headers/stack.h"
 
 
-static char NOTSTRING[] = "not";
+static char NOTSTRING[] = "NOT";
 
 
 Akinator_Err akinator_is_err(const Akinator_Err result, const char* name, const size_t line)
@@ -238,7 +238,7 @@ void print_definition(Main_Stack_Struct* stack)
         stack_pop(stack, &elem);
         for(int i = 0; elem[i] != '}' && elem[i] != '{' && elem[i] != '\0'; i++)
             fprintf(stderr, "%c", elem[i]);
-        fprintf(stderr, "\n");
+        fprintf(stderr, " ");
     }
 }
 

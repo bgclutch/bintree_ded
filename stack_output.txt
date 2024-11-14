@@ -2,10 +2,10 @@
 stack_cpps/stack.cpp ctor_stack:65
 **************************************************
 stack size: 0
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 8
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x606000000020
 stack address end: 0x606000000060
@@ -43,10 +43,10 @@ stack element empty 7 address: 0x606000000058
 stack_cpps/stack.cpp stack_push:119
 **************************************************
 stack size: 1
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 8
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x606000000020
 stack address end: 0x606000000060
@@ -84,10 +84,10 @@ stack element empty 7 address: 0x606000000058
 stack_cpps/stack.cpp stack_push:119
 **************************************************
 stack size: 2
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 8
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x606000000020
 stack address end: 0x606000000060
@@ -95,7 +95,7 @@ stack address end: 0x606000000060
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x606000000020
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x606000000028
 
 stack element empty 2: (nil)
@@ -125,10 +125,10 @@ stack element empty 7 address: 0x606000000058
 stack_cpps/stack.cpp stack_push:119
 **************************************************
 stack size: 3
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 8
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x606000000020
 stack address end: 0x606000000060
@@ -136,7 +136,7 @@ stack address end: 0x606000000060
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x606000000020
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x606000000028
 
 stack element non empty 2: 0x613000000051
@@ -166,10 +166,10 @@ stack element empty 7 address: 0x606000000058
 stack_cpps/stack.cpp stack_push:119
 **************************************************
 stack size: 4
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 8
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x606000000020
 stack address end: 0x606000000060
@@ -177,13 +177,13 @@ stack address end: 0x606000000060
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x606000000020
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x606000000028
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x606000000030
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x606000000038
 
 stack element empty 4: (nil)
@@ -207,10 +207,10 @@ stack element empty 7 address: 0x606000000058
 stack_cpps/stack.cpp stack_push:119
 **************************************************
 stack size: 5
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 8
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x606000000020
 stack address end: 0x606000000060
@@ -218,13 +218,13 @@ stack address end: 0x606000000060
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x606000000020
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x606000000028
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x606000000030
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x606000000038
 
 stack element non empty 4: 0x613000000061
@@ -248,10 +248,10 @@ stack element empty 7 address: 0x606000000058
 stack_cpps/stack.cpp stack_push:119
 **************************************************
 stack size: 6
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 8
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x606000000020
 stack address end: 0x606000000060
@@ -259,19 +259,19 @@ stack address end: 0x606000000060
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x606000000020
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x606000000028
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x606000000030
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x606000000038
 
 stack element non empty 4: 0x613000000061
 stack element non empty 4 address: 0x606000000040
 
-stack element non empty 5: 0x557f347c0720
+stack element non empty 5: 0x55b4a064f720
 stack element non empty 5 address: 0x606000000048
 
 stack element empty 6: (nil)
@@ -289,10 +289,10 @@ stack element empty 7 address: 0x606000000058
 stack_cpps/stack.cpp stack_push:119
 **************************************************
 stack size: 7
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 8
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x606000000020
 stack address end: 0x606000000060
@@ -300,19 +300,19 @@ stack address end: 0x606000000060
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x606000000020
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x606000000028
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x606000000030
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x606000000038
 
 stack element non empty 4: 0x613000000061
 stack element non empty 4 address: 0x606000000040
 
-stack element non empty 5: 0x557f347c0720
+stack element non empty 5: 0x55b4a064f720
 stack element non empty 5 address: 0x606000000048
 
 stack element non empty 6: 0x61300000007c
@@ -330,10 +330,10 @@ stack element empty 7 address: 0x606000000058
 stack_cpps/stack.cpp stack_push:119
 **************************************************
 stack size: 8
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -341,25 +341,25 @@ stack address end: 0x60c000000180
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x60c000000100
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x60c000000108
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x60c000000110
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x60c000000118
 
 stack element non empty 4: 0x613000000061
 stack element non empty 4 address: 0x60c000000120
 
-stack element non empty 5: 0x557f347c0720
+stack element non empty 5: 0x55b4a064f720
 stack element non empty 5 address: 0x60c000000128
 
 stack element non empty 6: 0x61300000007c
 stack element non empty 6 address: 0x60c000000130
 
-stack element non empty 7: 0x557f347c0720
+stack element non empty 7: 0x55b4a064f720
 stack element non empty 7 address: 0x60c000000138
 
 stack element empty 8: (nil)
@@ -395,10 +395,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp stack_push:119
 **************************************************
 stack size: 9
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -406,25 +406,25 @@ stack address end: 0x60c000000180
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x60c000000100
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x60c000000108
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x60c000000110
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x60c000000118
 
 stack element non empty 4: 0x613000000061
 stack element non empty 4 address: 0x60c000000120
 
-stack element non empty 5: 0x557f347c0720
+stack element non empty 5: 0x55b4a064f720
 stack element non empty 5 address: 0x60c000000128
 
 stack element non empty 6: 0x61300000007c
 stack element non empty 6 address: 0x60c000000130
 
-stack element non empty 7: 0x557f347c0720
+stack element non empty 7: 0x55b4a064f720
 stack element non empty 7 address: 0x60c000000138
 
 stack element non empty 8: 0x6130000000a1
@@ -460,10 +460,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp stack_pop:164
 **************************************************
 stack size: 8
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -471,25 +471,25 @@ stack address end: 0x60c000000180
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x60c000000100
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x60c000000108
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x60c000000110
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x60c000000118
 
 stack element non empty 4: 0x613000000061
 stack element non empty 4 address: 0x60c000000120
 
-stack element non empty 5: 0x557f347c0720
+stack element non empty 5: 0x55b4a064f720
 stack element non empty 5 address: 0x60c000000128
 
 stack element non empty 6: 0x61300000007c
 stack element non empty 6 address: 0x60c000000130
 
-stack element non empty 7: 0x557f347c0720
+stack element non empty 7: 0x55b4a064f720
 stack element non empty 7 address: 0x60c000000138
 
 stack element empty 8: (nil)
@@ -525,10 +525,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp stack_pop:164
 **************************************************
 stack size: 7
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -536,19 +536,19 @@ stack address end: 0x60c000000180
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x60c000000100
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x60c000000108
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x60c000000110
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x60c000000118
 
 stack element non empty 4: 0x613000000061
 stack element non empty 4 address: 0x60c000000120
 
-stack element non empty 5: 0x557f347c0720
+stack element non empty 5: 0x55b4a064f720
 stack element non empty 5 address: 0x60c000000128
 
 stack element non empty 6: 0x61300000007c
@@ -590,10 +590,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp stack_push:119
 **************************************************
 stack size: 8
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -601,19 +601,19 @@ stack address end: 0x60c000000180
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x60c000000100
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x60c000000108
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x60c000000110
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x60c000000118
 
 stack element non empty 4: 0x613000000061
 stack element non empty 4 address: 0x60c000000120
 
-stack element non empty 5: 0x557f347c0720
+stack element non empty 5: 0x55b4a064f720
 stack element non empty 5 address: 0x60c000000128
 
 stack element non empty 6: 0x61300000007c
@@ -655,10 +655,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp stack_pop:164
 **************************************************
 stack size: 7
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -666,19 +666,19 @@ stack address end: 0x60c000000180
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x60c000000100
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x60c000000108
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x60c000000110
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x60c000000118
 
 stack element non empty 4: 0x613000000061
 stack element non empty 4 address: 0x60c000000120
 
-stack element non empty 5: 0x557f347c0720
+stack element non empty 5: 0x55b4a064f720
 stack element non empty 5 address: 0x60c000000128
 
 stack element non empty 6: 0x61300000007c
@@ -720,10 +720,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp stack_pop:164
 **************************************************
 stack size: 6
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -731,19 +731,19 @@ stack address end: 0x60c000000180
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x60c000000100
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x60c000000108
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x60c000000110
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x60c000000118
 
 stack element non empty 4: 0x613000000061
 stack element non empty 4 address: 0x60c000000120
 
-stack element non empty 5: 0x557f347c0720
+stack element non empty 5: 0x55b4a064f720
 stack element non empty 5 address: 0x60c000000128
 
 stack element empty 6: (nil)
@@ -785,10 +785,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp stack_pop:164
 **************************************************
 stack size: 5
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -796,13 +796,533 @@ stack address end: 0x60c000000180
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x60c000000100
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x60c000000108
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x60c000000110
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000061
+stack element non empty 4 address: 0x60c000000120
+
+stack element empty 5: (nil)
+stack element empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 6
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x55b4a064f720
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000061
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000c2
+stack element non empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 7
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x55b4a064f720
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000061
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000c2
+stack element non empty 5 address: 0x60c000000128
+
+stack element non empty 6: 0x55b4a064f720
+stack element non empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 8
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x55b4a064f720
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000061
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000c2
+stack element non empty 5 address: 0x60c000000128
+
+stack element non empty 6: 0x55b4a064f720
+stack element non empty 6 address: 0x60c000000130
+
+stack element non empty 7: 0x6130000000c9
+stack element non empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 7
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x55b4a064f720
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000061
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000c2
+stack element non empty 5 address: 0x60c000000128
+
+stack element non empty 6: 0x55b4a064f720
+stack element non empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 6
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x55b4a064f720
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000061
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000c2
+stack element non empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 7
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x55b4a064f720
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000061
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000c2
+stack element non empty 5 address: 0x60c000000128
+
+stack element non empty 6: 0x6130000000e0
+stack element non empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 6
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x55b4a064f720
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000061
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000c2
+stack element non empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 5
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x60c000000118
 
 stack element non empty 4: 0x613000000061
@@ -850,10 +1370,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp stack_pop:164
 **************************************************
 stack size: 4
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -861,13 +1381,13 @@ stack address end: 0x60c000000180
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x60c000000100
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x60c000000108
 
 stack element non empty 2: 0x613000000051
 stack element non empty 2 address: 0x60c000000110
 
-stack element non empty 3: 0x557f347c0720
+stack element non empty 3: 0x55b4a064f720
 stack element non empty 3 address: 0x60c000000118
 
 stack element empty 4: (nil)
@@ -915,10 +1435,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp stack_pop:164
 **************************************************
 stack size: 3
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -926,7 +1446,1177 @@ stack address end: 0x60c000000180
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x60c000000100
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element empty 3: (nil)
+stack element empty 3 address: 0x60c000000118
+
+stack element empty 4: (nil)
+stack element empty 4 address: 0x60c000000120
+
+stack element empty 5: (nil)
+stack element empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 4
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element empty 4: (nil)
+stack element empty 4 address: 0x60c000000120
+
+stack element empty 5: (nil)
+stack element empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 5
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x55b4a064f720
+stack element non empty 4 address: 0x60c000000120
+
+stack element empty 5: (nil)
+stack element empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 6
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x55b4a064f720
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000f0
+stack element non empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 7
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x55b4a064f720
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000f0
+stack element non empty 5 address: 0x60c000000128
+
+stack element non empty 6: 0x55b4a064f720
+stack element non empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 8
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x55b4a064f720
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000f0
+stack element non empty 5 address: 0x60c000000128
+
+stack element non empty 6: 0x55b4a064f720
+stack element non empty 6 address: 0x60c000000130
+
+stack element non empty 7: 0x6130000000f7
+stack element non empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 7
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x55b4a064f720
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000f0
+stack element non empty 5 address: 0x60c000000128
+
+stack element non empty 6: 0x55b4a064f720
+stack element non empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 6
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x55b4a064f720
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000f0
+stack element non empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 7
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x55b4a064f720
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000f0
+stack element non empty 5 address: 0x60c000000128
+
+stack element non empty 6: 0x61300000010d
+stack element non empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 6
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x55b4a064f720
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x6130000000f0
+stack element non empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 5
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x55b4a064f720
+stack element non empty 4 address: 0x60c000000120
+
+stack element empty 5: (nil)
+stack element empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 4
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element empty 4: (nil)
+stack element empty 4 address: 0x60c000000120
+
+stack element empty 5: (nil)
+stack element empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 5
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000115
+stack element non empty 4 address: 0x60c000000120
+
+stack element empty 5: (nil)
+stack element empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 6
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000115
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x55b4a064f720
+stack element non empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_push:119
+**************************************************
+stack size: 7
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000115
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x55b4a064f720
+stack element non empty 5 address: 0x60c000000128
+
+stack element non empty 6: 0x61300000011b
+stack element non empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 6
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000115
+stack element non empty 4 address: 0x60c000000120
+
+stack element non empty 5: 0x55b4a064f720
+stack element non empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 5
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element non empty 4: 0x613000000115
+stack element non empty 4 address: 0x60c000000120
+
+stack element empty 5: (nil)
+stack element empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 4
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
+stack element non empty 1 address: 0x60c000000108
+
+stack element non empty 2: 0x613000000051
+stack element non empty 2 address: 0x60c000000110
+
+stack element non empty 3: 0x6130000000e9
+stack element non empty 3 address: 0x60c000000118
+
+stack element empty 4: (nil)
+stack element empty 4 address: 0x60c000000120
+
+stack element empty 5: (nil)
+stack element empty 5 address: 0x60c000000128
+
+stack element empty 6: (nil)
+stack element empty 6 address: 0x60c000000130
+
+stack element empty 7: (nil)
+stack element empty 7 address: 0x60c000000138
+
+stack element empty 8: (nil)
+stack element empty 8 address: 0x60c000000140
+
+stack element empty 9: (nil)
+stack element empty 9 address: 0x60c000000148
+
+stack element empty 10: (nil)
+stack element empty 10 address: 0x60c000000150
+
+stack element empty 11: (nil)
+stack element empty 11 address: 0x60c000000158
+
+stack element empty 12: (nil)
+stack element empty 12 address: 0x60c000000160
+
+stack element empty 13: (nil)
+stack element empty 13 address: 0x60c000000168
+
+stack element empty 14: (nil)
+stack element empty 14 address: 0x60c000000170
+
+stack element empty 15: (nil)
+stack element empty 15 address: 0x60c000000178
+
+**************************************************
+
+
+
+
+**************************************************
+stack_cpps/stack.cpp stack_pop:164
+**************************************************
+stack size: 3
+stack size address: 0x7ffeddae87d8
+**************************************************
+stack capacity: 16
+stack capacity address: 0x7ffeddae87e0
+**************************************************
+stack address begin: 0x60c000000100
+stack address end: 0x60c000000180
+**************************************************
+stack element non empty 0: 0x613000000041
+stack element non empty 0 address: 0x60c000000100
+
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x60c000000108
 
 stack element non empty 2: 0x613000000051
@@ -980,10 +2670,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp stack_pop:164
 **************************************************
 stack size: 2
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -991,7 +2681,7 @@ stack address end: 0x60c000000180
 stack element non empty 0: 0x613000000041
 stack element non empty 0 address: 0x60c000000100
 
-stack element non empty 1: 0x557f347c0720
+stack element non empty 1: 0x55b4a064f720
 stack element non empty 1 address: 0x60c000000108
 
 stack element empty 2: (nil)
@@ -1045,10 +2735,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp stack_pop:164
 **************************************************
 stack size: 1
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -1110,10 +2800,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp stack_pop:164
 **************************************************
 stack size: 0
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
@@ -1175,10 +2865,10 @@ stack element empty 15 address: 0x60c000000178
 stack_cpps/stack.cpp dtor_stack:72
 **************************************************
 stack size: 0
-stack size address: 0x7ffdf2cdd908
+stack size address: 0x7ffeddae87d8
 **************************************************
 stack capacity: 16
-stack capacity address: 0x7ffdf2cdd910
+stack capacity address: 0x7ffeddae87e0
 **************************************************
 stack address begin: 0x60c000000100
 stack address end: 0x60c000000180
