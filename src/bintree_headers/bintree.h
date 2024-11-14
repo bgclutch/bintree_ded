@@ -20,7 +20,6 @@ struct Node
 struct Tree
 {
     Node* root; // ctor elem && dtor elem
-    size_t tree_size = 0;
     char* buffer;
     // tree size
 };

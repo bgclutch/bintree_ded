@@ -5,9 +5,9 @@
 #include "../bintree_headers/akinator.h"
 
 
-Akinator_Err create_data_buffer(char** buffer, Tree* tree, size_t* buffer_size);
+Akinator_Err create_data_buffer(char** buffer, size_t* buffer_size);
 
-size_t scope_checker(const char* buffer, const size_t buffer_size, size_t* tree_size);
+size_t scope_checker(const char* buffer, const size_t buffer_size);
 
 Akinator_Err read_tree_from_file(Tree* tree);
 

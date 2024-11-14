@@ -156,11 +156,11 @@ void tree_branch_dtor(Node* node, const char* data, const size_t len)
         tree_branch_dtor(node->right, data, len);
     }
 
-    if(node->data < data || node->data > data + len)
-    {
-        free(node->data);
-        node->data = nullptr;
-    }
+    // if(node->data < data || node->data > data + len)
+    // {
+    //     free(node->data);
+    //     node->data = nullptr;
+    // }
     free(node);
 
     return;

@@ -46,7 +46,7 @@ Tree_Errors move_old_and_add_new_answer(Node* node);
 
 Tree_Errors edit_node(Node** node, const NodeElem_t new_data, const size_t new_data_size);
 
-Tree_Errors change_recieved_leaf(Node* node);
+Tree_Errors change_recieved_leaf(Node** node);
 
 void gamestart(Node* root);
 

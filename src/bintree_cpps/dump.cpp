@@ -142,6 +142,9 @@ Dump_Errors dump_is_err(Dump_Errors result, const char* name, const size_t line)
 
 void fill_file_with_number(FILE* graph_dump_file, Node* node)
 {
+    assert(graph_dump_file);
+    assert(node);
+
     if(node->left == node->right)
     {
         print_to_dump_file(node, graph_dump_file, LEAF_COLOR);

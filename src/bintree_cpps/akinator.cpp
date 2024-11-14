@@ -30,7 +30,7 @@ Tree_Errors move_old_and_add_new_answer(Node* node)
     assert(node);
 
     NODE_ERR(node_init(&node->left, node->data, node->data_size), NODE_INIT_ERR);
-    node->left->parent = node;                           // move old answer
+    node->left->parent = node;                               // move old answer
 
     fprintf(stderr, "moldata:%p\n", node->left->data);
 
@@ -50,14 +50,14 @@ Tree_Errors move_old_and_add_new_answer(Node* node)
 }
 
 
-Tree_Errors change_recieved_leaf(Node* node)
+Tree_Errors change_recieved_leaf(Node** node)
 {
     assert(node);
 
-    if(node->left || node->right)
+    if((*node)->left || (*node)->right)
         return NODE_IS_BRANCH;
 
-    move_old_and_add_new_answer(node);
+    move_old_and_add_new_answer(*node);
 
     char* new_branch_data = nullptr;
     fprintf(stderr, "\nplease, input difference between wrong(old) and right(new) answers(w/o '?' sign):\n");
@@ -68,7 +68,7 @@ Tree_Errors change_recieved_leaf(Node* node)
 
     new_branch_size = strlen(new_branch_data) - 1;
 
-    NODE_ERR(edit_node(&node, new_branch_data, new_branch_size), DENY_TO_EDIT);
+    NODE_ERR(edit_node(node, new_branch_data, new_branch_size), DENY_TO_EDIT);
     return NODE_IS_OKAY;
 }
 
@@ -95,9 +95,10 @@ Tree_Errors edit_node(Node** node, const NodeElem_t new_data, const size_t new_d
 
 void gamestart(Node* root)
 {
-    Node* answer_node = (Node*)calloc(sizeof(Node), 1);
+    Node** answer_node = (Node**)calloc(sizeof(Node*), 1);
+    fprintf(stderr, "ansnode %p\n", answer_node);
 
-    akinator_func(root, &answer_node);
+    akinator_func(root, answer_node);
     assert(answer_node);
 
     fprintf(stderr, "\nam i right?");
@@ -106,8 +107,8 @@ void gamestart(Node* root)
     if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
     {
         fprintf(stderr, "i hope you enjoy being ");
-        for(size_t i = strlen("you are "); i < answer_node->data_size; i++)
-            fprintf(stderr, "%c", answer_node->data[i]);
+        for(size_t i = strlen("you are "); i < (*answer_node)->data_size; i++)
+            fprintf(stderr, "%c", (*answer_node)->data[i]);
         fprintf(stderr, "!\n");
     }
     else if(!strncmp(answer, NOANSWER, strlen(NOANSWER)))
@@ -132,6 +133,7 @@ void gamestart(Node* root)
     else
     {
         free(answer);
+        free(answer_node);
         fprintf(stderr, "good luck!\n");
     }
 

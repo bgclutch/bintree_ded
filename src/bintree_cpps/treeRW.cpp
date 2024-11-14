@@ -10,7 +10,7 @@
 #include "../../lib_file_proc/file.h"
 
 
-Akinator_Err create_data_buffer(char** buffer, Tree* tree, size_t* buffer_size)
+Akinator_Err create_data_buffer(char** buffer, size_t* buffer_size)
 {
     FILE* buffer_file = nullptr;
 
@@ -28,7 +28,7 @@ Akinator_Err create_data_buffer(char** buffer, Tree* tree, size_t* buffer_size)
         return AKINATOR_BUFFER_CTOR_ERR;
     }
 
-    size_t scope_difference = scope_checker(*buffer, *buffer_size, &tree->tree_size);
+    size_t scope_difference = scope_checker(*buffer, *buffer_size);
 
     if(scope_difference != 0)
     {
@@ -53,7 +53,7 @@ Akinator_Err read_tree_from_file(Tree* tree)
     size_t buffer_size = 0;
     char* buffer = nullptr;
 
-    if(create_data_buffer(&buffer, tree, &buffer_size) != AKINATOR_STILL_ALIVE)
+    if(create_data_buffer(&buffer, &buffer_size) != AKINATOR_STILL_ALIVE)
     {
         free(buffer);
         return AKINATOR_BUFFER_CTOR_ERR;
@@ -87,7 +87,7 @@ Akinator_Err read_tree_from_file(Tree* tree)
 }
 
 
-size_t scope_checker(const char* buffer, const size_t buffer_size, size_t* tree_size)
+size_t scope_checker(const char* buffer, const size_t buffer_size)
 {
     assert(buffer);
 
@@ -103,9 +103,6 @@ size_t scope_checker(const char* buffer, const size_t buffer_size, size_t* tree_
         if(buffer[index_buffer] == '}')
             counter_scope_end++;
     }
-
-    if(tree_size != nullptr)
-        *tree_size = counter_scope_begin;
 
     return counter_scope_begin - counter_scope_end;
 }
