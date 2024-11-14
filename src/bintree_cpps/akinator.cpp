@@ -9,10 +9,10 @@
 #include "../bintree_headers/dump.h"
 #include "../../lib_file_proc/file.h"
 #include "../../lib_buffer_proc/buffer.h"
-// #include "../../stack_ded/stack_headers/stack.h"
+#include "../../stack_ded/stack_headers/colorised_output.h"
 
 
-static char NOTSTRING[] = "NOT";
+static char NOTSTRING[] = "!NOT!";
 
 
 Akinator_Err akinator_is_err(const Akinator_Err result, const char* name, const size_t line)
@@ -37,7 +37,7 @@ Tree_Errors move_old_and_add_new_answer(Node* node)
     node->left->parent = node;                               // move old answer
 
     char* new_answer_data = nullptr;
-    fprintf(stderr, "\nplease, input your expected object:\n");
+    fprintf(stderr, "\nplease, input your expected object(starts with you are... optionally):\n");
     size_t new_answer_size = 0;
 
     if(getline(&new_answer_data, &new_answer_size, stdin) == GETLINEERR)
@@ -62,7 +62,7 @@ Tree_Errors change_recieved_leaf(Node** node)
     move_old_and_add_new_answer(*node);
 
     char* new_branch_data = nullptr;
-    fprintf(stderr, "\nplease, input difference between wrong(old) and right(new) answers(w/o '?' sign):\n");
+    fprintf(stderr, "\nplease, input difference between wrong(old) and right(new) answers(w/o '?' sign and starts with 'you are' optionally):\n");
     size_t new_branch_size = 0;
 
     if(getline(&new_branch_data, &new_branch_size, stdin) == -1)
@@ -141,10 +141,20 @@ void gamestart(Node* root)
 }
 
 
-// Akinator_Err comparestart(Node* root)
-// {
+Akinator_Err comparestart(Node* root)
+{
+    assert(root);
 
-// }
+    Main_Stack_Struct first = {};
+    Main_Stack_Struct second = {};
+
+    find_define();
+    find_define();
+
+
+
+
+}
 
 
 
@@ -152,7 +162,7 @@ Akinator_Err getdefine(Node* root)
 {
     assert(root);
 
-    fprintf(stderr, "input your word\n");
+    fprintf(stderr, "input your word/sentense\n");
     char* chosen_word = nullptr;
     size_t chosen_word_size = 0;
     if(getline(&chosen_word, &chosen_word_size, stdin) == GETLINEERR)
@@ -165,7 +175,7 @@ Akinator_Err getdefine(Node* root)
 
     int retval = -1;
 
-    find_word(root, chosen_word, &retval, &stack);
+    find_define(root, chosen_word, &retval, &stack);
 
     if(retval == 0)
     {
@@ -177,13 +187,27 @@ Akinator_Err getdefine(Node* root)
         fprintf(stderr, "NO DEFINE TODAY\n");
     }
 
+    fprintf(stderr, "do you want to play again?\n");
+    char* answer = get_user_answer();
+
+    if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
+    {
+        free(answer);
+        getdefine(root);
+    }
+    else
+    {
+        free(answer);
+        fprintf(stderr, "good luck!\n");
+    }
+
     free(chosen_word);
     dtor_stack(&stack);
     return AKINATOR_STILL_ALIVE;
 }
 
 
-void find_word(Node* node, const char* word, int* retval, Main_Stack_Struct* stack)
+void find_define(Node* node, const char* word, int* retval, Main_Stack_Struct* stack)
 {
     char* pop_elem = 0;
 
@@ -205,7 +229,7 @@ void find_word(Node* node, const char* word, int* retval, Main_Stack_Struct* sta
     else
     {
         stack_push(stack, NOTSTRING);
-        find_word(node->left, word, retval, stack);
+        find_define(node->left, word, retval, stack);
     }
     if(*retval != 0)
     {
@@ -219,7 +243,7 @@ void find_word(Node* node, const char* word, int* retval, Main_Stack_Struct* sta
     }
     else
     {
-        find_word(node->right, word, retval, stack);
+        find_define(node->right, word, retval, stack);
     }
 
      if(*retval != 0)
@@ -237,8 +261,8 @@ void print_definition(Main_Stack_Struct* stack)
         char* elem = nullptr;
         stack_pop(stack, &elem);
         for(int i = 0; elem[i] != '}' && elem[i] != '{' && elem[i] != '\0'; i++)
-            fprintf(stderr, "%c", elem[i]);
-        fprintf(stderr, " ");
+            fprintf(stderr, BLUE_TEXT("%c"), elem[i]);
+        fprintf(stderr, "\n");
     }
 }
 

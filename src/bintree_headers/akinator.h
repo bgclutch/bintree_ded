@@ -55,7 +55,7 @@ void gamestart(Node* root);
 
 void akinator_func(Node* node, Node** answer_node);
 
-void find_word(Node* node, const char* word, int* retval, Main_Stack_Struct* stack);
+void find_define(Node* node, const char* word, int* retval, Main_Stack_Struct* stack);
 
 Akinator_Err getdefine(Node* root);
 

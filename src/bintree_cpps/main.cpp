@@ -36,6 +36,7 @@ int main(const int argc, const char** argv)
     else if(strcmp(argv[1], GETDEFINE) == 0)
     {
         getdefine(tree.root);
+        create_png(&General_Dump, tree.root);
     }
     else
     {
