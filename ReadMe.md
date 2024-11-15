@@ -16,3 +16,5 @@ make
 ```sh
 ./bintree with flag
 ```
+
+![Matveyka)](dumps/html/graph_dump0.png)
