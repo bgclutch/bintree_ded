@@ -25,4 +25,8 @@ void write_nodes_to_file(Node* node, FILE* file);
 
 Akinator_Err write_tree_to_file(Node* root, FILE* file);
 
+Tree tree_ctor();
+
+void tree_dtor(Tree* tree);
+
 #endif // TREERW_H_

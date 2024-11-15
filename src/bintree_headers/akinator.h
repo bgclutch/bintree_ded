@@ -88,4 +88,5 @@ char* get_user_sentence();
 
 void clean_buffer();
 
+
 #endif // AKINATOR_H_

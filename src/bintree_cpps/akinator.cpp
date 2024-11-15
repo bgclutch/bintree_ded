@@ -54,13 +54,14 @@ Tree_Errors move_old_and_add_new_answer(Node* node)
 Tree_Errors change_recieved_leaf(Node** node)
 {
     assert(node);
+    assert(*node);
 
     if((*node)->left || (*node)->right)
         return NODE_IS_BRANCH;
 
     move_old_and_add_new_answer(*node);
 
-    fprintf(stderr, "\nplease, input difference between wrong(old) and right(new) answers(w/o '?' and 'you are'):\n");
+    fprintf(stderr, "please, input difference between wrong(old) and right(new) answers(w/o '?' and 'you are'):\n");
 
     char* new_branch_data = get_user_sentence();
     if(!new_branch_data)
@@ -93,6 +94,8 @@ Tree_Errors edit_node(Node** node, const NodeElem_t new_data, const size_t new_d
 
 void gamestart(Node* root)
 {
+    assert(root);
+
     Node** answer_node = (Node**)calloc(sizeof(Node*), 1);
     akinator_func(root, answer_node);
     assert(answer_node);
@@ -171,10 +174,6 @@ Akinator_Err comparestart(Node* root)
     }
     else
     {
-        // fprintf(stderr, "first definition:\n");
-        // print_definition(&first_stack);
-        // fprintf(stderr, "second definition:\n");
-        // print_definition(&second_stack);
         compare_definitions_print(&first_stack, &second_stack);
     }
 
@@ -247,6 +246,11 @@ Akinator_Err getdefine(Node* root)
 
 void find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Struct* stack)
 {
+    assert(node);
+    assert(word);
+    assert(retval);
+    assert(stack);
+
     char* pop_elem = 0;
 
     stack_push(stack, node->data);
@@ -292,9 +296,12 @@ void find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Stru
 
 void print_definition(Main_Stack_Struct* stack)
 {
+    assert(stack);
+
+    fprintf(stderr, "you are ");
+
     while(stack->size > 0)
     {
-        fprintf(stderr, "you are ");
         char* elem = nullptr;
         stack_pop(stack, &elem);
         for(int i = 0; elem[i] != '}' && elem[i] != '{' && elem[i] != '\0'; i++)
@@ -303,8 +310,11 @@ void print_definition(Main_Stack_Struct* stack)
         if(strcmp(elem, NOTSTRING) == 0)
             fprintf(stderr, " ");
         else
-            fprintf(stderr, "\n");
+            fprintf(stderr, "\nyou are ");
+
     }
+
+    fprintf(stderr, "\r");
 }
 
 
@@ -401,7 +411,7 @@ void compare_definitions_print(Main_Stack_Struct* first, Main_Stack_Struct* seco
     char* first_elem  = nullptr;
     char* second_elem = nullptr;
 
-    fprintf(stderr, "first:\tsecond:\n");
+    fprintf(stderr, BLUE_TEXT("color if similar\n") GREEN_TEXT("first")"\\"RED_TEXT("second\n"));
 
     while(first->size != 0 && second->size != 0)
     {
@@ -415,11 +425,11 @@ void compare_definitions_print(Main_Stack_Struct* first, Main_Stack_Struct* seco
         else
             second_elem = nullptr;
 
-        Text_Colors color = BLUETEXT;
+        Text_Colors color = MAGENTATEXT;
 
-        if(first_elem)
+        if(first_elem && first->size >= second->size)
         {
-            if(first_elem == second_elem)
+            if(!strncmp(first_elem, second_elem, strlen(first_elem)))
             {
                 stack_elem_outp(first_elem, BLUETEXT);
                 color = BLUETEXT;
@@ -434,17 +444,23 @@ void compare_definitions_print(Main_Stack_Struct* first, Main_Stack_Struct* seco
             {
                 fprintf(stderr, " ");
                 stack_pop(first, &first_elem);
+                if(strcmp(first_elem, second_elem) != 0)
+                    color = GREENTEXT;
                 stack_elem_outp(first_elem, color);
             }
         }
-
-        fprintf(stderr, "\t");
-
-        if(second_elem)
+        else
         {
-            if(first_elem == second_elem)
+            fprintf(stderr, "---");
+        }
+
+        fprintf(stderr, "\\");
+
+        if(second_elem && second->size >= first->size)
+        {
+            if(!strncmp(first_elem, second_elem, strlen(second_elem)))
             {
-                // stack_elem_outp(second_elem, BLUETEXT);
+                stack_elem_outp(second_elem, BLUETEXT);
                 color = BLUETEXT;
             }
             else
@@ -457,8 +473,14 @@ void compare_definitions_print(Main_Stack_Struct* first, Main_Stack_Struct* seco
             {
                 fprintf(stderr, " ");
                 stack_pop(second, &second_elem);
+                if(strcmp(first_elem, second_elem) != 0)
+                    color = REDTEXT;
                 stack_elem_outp(second_elem, color);
             }
+        }
+        else
+        {
+            fprintf(stderr, "---");
         }
 
         fprintf(stderr, "\n");

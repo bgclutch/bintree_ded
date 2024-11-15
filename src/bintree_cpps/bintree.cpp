@@ -60,6 +60,7 @@ Tree_Errors init_free_node(Node* node, const NodeElem_t elem, const NodeElem_t c
 {
     assert(node);
     assert(node->data);
+    assert(node_counter);
 
     if(comp_elem >= elem)               // switch?
     {
@@ -130,6 +131,8 @@ Tree_Errors tree_is_err(const Tree_Errors result, const char* name, const size_t
 
 void tree_print(Node* node)
 {
+    assert(node);
+
     if(!node) return;
     assert(node->data);
 
@@ -147,6 +150,9 @@ void tree_print(Node* node)
 
 void tree_branch_dtor(Node* node, const char* data, const size_t len)
 {
+    assert(node);
+    assert(data);
+
     if(node->left != nullptr)
     {
         tree_branch_dtor(node->left, data, len);

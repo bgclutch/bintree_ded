@@ -12,6 +12,9 @@
 
 Akinator_Err create_data_buffer(char** buffer, size_t* buffer_size)
 {
+    assert(!*buffer);
+    assert(buffer_size);
+
     FILE* buffer_file = nullptr;
 
     if(file_read_open(&buffer_file, DATABASE) != ALL_GOOD_RET_F)
@@ -110,6 +113,8 @@ size_t scope_checker(const char* buffer, const size_t buffer_size)
 
 char* find_word_begin(char* buffer, const char* bufend)
 {
+    assert(buffer);
+    assert(bufend);
     size_t index_buffer = 0;
 
     for(; !isalpha(buffer[index_buffer]) && buffer + index_buffer < bufend; index_buffer++);
@@ -151,6 +156,8 @@ void create_new_node(Node** node, char* buffer, size_t* all_bytes)
 
 size_t get_node_data_size(const char* word_beginning)
 {
+    assert(word_beginning);
+
     size_t index = 0;
 
     for(; word_beginning[index] != '{' && word_beginning[index] != '}' && word_beginning[index] != '\0'; index++);
@@ -213,6 +220,7 @@ Akinator_Err write_tree_to_file(Node* root, FILE* file) // FIXME WTF REALLOC
 void write_nodes_to_file(Node* node, FILE* file)
 {
     assert(node);
+    assert(file);
 
     fprintf(file, "{");
 
@@ -233,4 +241,22 @@ void write_nodes_to_file(Node* node, FILE* file)
 
     fprintf(file, "}");
     return;
+}
+
+
+Tree tree_ctor()
+{
+    Tree tree = {};
+    read_tree_from_file(&tree);
+
+    return tree;
+}
+
+
+void tree_dtor(Tree* tree)
+{
+    assert(tree);
+
+    tree_branch_dtor(tree->root, tree->buffer, strlen(tree->buffer));
+    free(tree->buffer);
 }
