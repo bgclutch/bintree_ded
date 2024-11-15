@@ -48,6 +48,15 @@ enum Find_Res
     FOUND    =  0,
 };
 
+enum Text_Colors
+{
+    REDTEXT,
+    BLUETEXT,
+    GREENTEXT,
+    MAGENTATEXT,
+    YELLOWTEXT,
+};
+
 
 Akinator_Err akinator_is_err(const Akinator_Err result, const char* name, const size_t line);
 
@@ -68,6 +77,10 @@ Akinator_Err getdefine(Node* root);
 void print_definition(Main_Stack_Struct* stack);
 
 Akinator_Err comparestart(Node* root);
+
+void compare_definitions_print(Main_Stack_Struct* first, Main_Stack_Struct* second);
+
+void stack_elem_outp(const StackElem_t elem, const Text_Colors color);
 
 char* get_user_answer();
 

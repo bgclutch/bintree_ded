@@ -60,7 +60,7 @@ Tree_Errors change_recieved_leaf(Node** node)
 
     move_old_and_add_new_answer(*node);
 
-    fprintf(stderr, "\nplease, input difference between wrong(old) and right(new) answers(w/o '?' sign and w/o 'you are'):\n");
+    fprintf(stderr, "\nplease, input difference between wrong(old) and right(new) answers(w/o '?' and 'you are'):\n");
 
     char* new_branch_data = get_user_sentence();
     if(!new_branch_data)
@@ -122,7 +122,7 @@ void gamestart(Node* root)
     fprintf(stderr, "do you want to play again?\n");
     answer = get_user_answer();
 
-    if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
+    if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))  // copypaste(((
     {
         free(answer);
         free(answer_node);
@@ -157,47 +157,33 @@ Akinator_Err comparestart(Node* root)
     Main_Stack_Struct first_stack  = {};
     Main_Stack_Struct second_stack = {};
 
+    ctor_stack(&first_stack);
+    ctor_stack(&second_stack);
+
     Find_Res retval_first  = NOTFOUND;
     Find_Res retval_second = NOTFOUND;
     find_define(root, first,  &retval_first,  &first_stack);
     find_define(root, second, &retval_second, &second_stack);
 
-    if(retval_first && retval_second)
+    if(retval_first == NOTFOUND || retval_second == NOTFOUND)
     {
         fprintf(stderr, "NOTHING TO COMPARE\n");
     }
     else
     {
-        fprintf(stderr, "definitions difference:\n");
-        char* elem_first  = nullptr;
-        char* elem_second = nullptr;
-        while(elem_first == elem_second)
-        {
-            stack_pop(&first_stack,  &elem_first);
-            stack_pop(&second_stack, &elem_second);
-
-            fprintf(stderr, "first: ");
-            for(int i = 0; elem_first[i] != '}' && elem_first[i] != '{' && elem_first[i] != '\0'; i++)
-                fprintf(stderr, BLUE_TEXT("%c"), elem_first[i]);
-            fprintf(stderr, "\n");
-
-            fprintf(stderr, "first: ");
-            for(int i = 0; elem_second[i] != '}' && elem_second[i] != '{' && elem_second[i] != '\0'; i++)
-                fprintf(stderr, YELLOW_TEXT("%c"), elem_second[i]);
-            fprintf(stderr, "\n");
-        }
-        fprintf(stderr, "definitions similar at:\n");
-        while(first_stack.size > 0)
-        {
-            stack_pop(&first_stack,  &elem_first);
-            stack_pop(&second_stack, &elem_second);
-            for(int i = 0; elem_first[i] != '}' && elem_first[i] != '{' && elem_first[i] != '\0'; i++)
-                fprintf(stderr, GREEN_TEXT("%c"), elem_first[i]);
-            fprintf(stderr, "\n");
-        }
+        // fprintf(stderr, "first definition:\n");
+        // print_definition(&first_stack);
+        // fprintf(stderr, "second definition:\n");
+        // print_definition(&second_stack);
+        compare_definitions_print(&first_stack, &second_stack);
     }
 
-    fprintf(stderr, "do you want to play again?\n");
+    free(first);
+    free(second);
+    dtor_stack(&first_stack);
+    dtor_stack(&second_stack);
+
+    fprintf(stderr, "do you want to play again?\n"); // copypaste(((
     char* answer = get_user_answer();
 
     if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
@@ -210,11 +196,6 @@ Akinator_Err comparestart(Node* root)
         free(answer);
         fprintf(stderr, "good luck!\n");
     }
-
-    free(first);
-    free(second);
-    dtor_stack(&first_stack);
-    dtor_stack(&second_stack);
 
     return AKINATOR_STILL_ALIVE;
 }
@@ -247,7 +228,7 @@ Akinator_Err getdefine(Node* root)
     fprintf(stderr, "do you want to play again?\n");
     char* answer = get_user_answer();
 
-    if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
+    if(!strncmp(answer, YESANSWER, strlen(YESANSWER))) // copypaste(((
     {
         free(answer);
         getdefine(root);
@@ -303,34 +284,26 @@ void find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Stru
         find_define(node->right, word, retval, stack);
     }
 
-     if(*retval == NOTFOUND)
+    if(*retval == NOTFOUND)
     {
         stack_pop(stack, &pop_elem);
     }
-
-    return;
 }
 
 void print_definition(Main_Stack_Struct* stack)
 {
-    fprintf(stderr, "you are ");
-
     while(stack->size > 0)
     {
+        fprintf(stderr, "you are ");
         char* elem = nullptr;
         stack_pop(stack, &elem);
         for(int i = 0; elem[i] != '}' && elem[i] != '{' && elem[i] != '\0'; i++)
             fprintf(stderr, BLUE_TEXT("%c"), elem[i]);
 
         if(strcmp(elem, NOTSTRING) == 0)
-        {
             fprintf(stderr, " ");
-        }
         else
-        {
             fprintf(stderr, "\n");
-            fprintf(stderr, "you are ");
-        }
     }
 }
 
@@ -383,12 +356,11 @@ char* get_user_answer()
           strncmp(userinput, NOANSWER,  strlen(NOANSWER)))
     {
         fprintf(stderr, "try again!\n");
+        free(userinput);
         userinput = get_user_sentence();
         if(!userinput)
             return nullptr;
     }
-
-    fprintf(stderr, "\r");
 
     return userinput;
 }
@@ -418,4 +390,121 @@ char* get_user_sentence()
     // }
 
     return sentence;
+}
+
+
+void compare_definitions_print(Main_Stack_Struct* first, Main_Stack_Struct* second)
+{
+    assert(first);
+    assert(second);
+
+    char* first_elem  = nullptr;
+    char* second_elem = nullptr;
+
+    fprintf(stderr, "first:\tsecond:\n");
+
+    while(first->size != 0 && second->size != 0)
+    {
+        if(first->size)
+            stack_pop(first, &first_elem);
+        else
+            first_elem = nullptr;
+
+        if(second->size)
+            stack_pop(second, &second_elem);
+        else
+            second_elem = nullptr;
+
+        Text_Colors color = BLUETEXT;
+
+        if(first_elem)
+        {
+            if(first_elem == second_elem)
+            {
+                stack_elem_outp(first_elem, BLUETEXT);
+                color = BLUETEXT;
+            }
+            else
+            {
+                stack_elem_outp(first_elem, GREENTEXT);
+                color = GREENTEXT;
+            }
+
+            if(strcmp(first_elem, NOTSTRING) == 0 && first->size > 0)
+            {
+                fprintf(stderr, " ");
+                stack_pop(first, &first_elem);
+                stack_elem_outp(first_elem, color);
+            }
+        }
+
+        fprintf(stderr, "\t");
+
+        if(second_elem)
+        {
+            if(first_elem == second_elem)
+            {
+                // stack_elem_outp(second_elem, BLUETEXT);
+                color = BLUETEXT;
+            }
+            else
+            {
+                stack_elem_outp(second_elem, REDTEXT);
+                color = REDTEXT;
+            }
+
+            if(strcmp(second_elem, NOTSTRING) == 0 && second->size > 0)
+            {
+                fprintf(stderr, " ");
+                stack_pop(second, &second_elem);
+                stack_elem_outp(second_elem, color);
+            }
+        }
+
+        fprintf(stderr, "\n");
+    }
+}
+
+
+void stack_elem_outp(const StackElem_t elem, const Text_Colors color)
+{
+    switch(color)
+    {
+        case REDTEXT:
+        {
+            for(int i = 0; elem[i] != '}' && elem[i]  != '{' && elem[i]  != '\0'; i++)
+                fprintf(stderr, RED_TEXT("%c"), elem[i]);
+            break;
+        }
+        case BLUETEXT:
+        {
+            for(int i = 0; elem[i] != '}' && elem[i]  != '{' && elem[i]  != '\0'; i++)
+                fprintf(stderr, BLUE_TEXT("%c"), elem[i]);
+            break;
+        }
+        case GREENTEXT:
+        {
+            for(int i = 0; elem[i] != '}' && elem[i]  != '{' && elem[i]  != '\0'; i++)
+                fprintf(stderr, GREEN_TEXT("%c"), elem[i]);
+            break;
+        }
+        case YELLOWTEXT:
+        {
+            for(int i = 0; elem[i] != '}' && elem[i]  != '{' && elem[i]  != '\0'; i++)
+                fprintf(stderr, YELLOW_TEXT("%c"), elem[i]);
+            break;
+        }
+        case MAGENTATEXT:
+        {
+            for(int i = 0; elem[i] != '}' && elem[i]  != '{' && elem[i]  != '\0'; i++)
+                fprintf(stderr, MAGENTA_TEXT("%c"), elem[i]);
+            break;
+        }
+        default:
+        {
+            assert(0);
+            break;
+        }
+
+    }
 }
