@@ -37,8 +37,8 @@ const char* const COMPAREMODE  = "--compare";
 const char* const GETDEFINE    = "--define";
 const char* const INSTRUCTIONS = "-h";
 
-const char* const YESANSWER = "yes";
-const char* const NOANSWER  = "no";
+const char YESANSWER[] = "yes";
+const char NOANSWER[]  = "no";
 
 const ssize_t GETLINEERR = -1;
 
@@ -68,7 +68,7 @@ Tree_Errors change_recieved_leaf(Node** node);
 
 void gamestart(Node* root);
 
-void akinator_func(Node* node, Node** answer_node);
+Node* akinator_func(Node* node);
 
 void find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Struct* stack);
 
@@ -81,6 +81,8 @@ Akinator_Err comparestart(Node* root);
 void compare_definitions_print(Main_Stack_Struct* first, Main_Stack_Struct* second);
 
 void stack_elem_outp(const StackElem_t elem, const Text_Colors color);
+
+int is_left_node(Node* node);
 
 char* get_user_answer();
 

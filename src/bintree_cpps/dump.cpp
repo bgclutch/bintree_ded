@@ -37,17 +37,15 @@ Dump_Errors prepare_graphic_file(const Dump_St General_Dump)
 }
 
 
-void graphic_dump(Node* node, Dump_St* General_Dump)
+void graphic_dump(Node* node, Dump_St* General_Dump) // FIXME open file 1 time
 {
     assert(node);
     assert(General_Dump);
 
-    FILE* graph_dump_file = fopen(General_Dump->GRAPHIC_DUMP, "a+");
+    FILE* graph_dump_file = fopen(General_Dump->GRAPHIC_DUMP, "a");
+    assert(graph_dump_file);
 
-    if(graph_dump_file == nullptr)
-        assert(0);
-
-    if(node->left)
+    if(node->left) // FIXME make func
     {
         fill_file_with_number(graph_dump_file, node->left);
 
@@ -69,12 +67,12 @@ void graphic_dump(Node* node, Dump_St* General_Dump)
             assert(0);
     }
 
-    graph_dump_file = fopen(General_Dump->GRAPHIC_DUMP, "a+");
+    graph_dump_file = fopen(General_Dump->GRAPHIC_DUMP, "a");
 
     if(graph_dump_file == nullptr)
         assert(0);
 
-    if(node->right)
+    if(node->right) // FIXME make func
     {
         fill_file_with_number(graph_dump_file, node->right);
 
@@ -97,7 +95,7 @@ void graphic_dump(Node* node, Dump_St* General_Dump)
             assert(0);
     }
 
-    graph_dump_file = fopen(General_Dump->GRAPHIC_DUMP, "a+");
+    graph_dump_file = fopen(General_Dump->GRAPHIC_DUMP, "a");
 
     if(graph_dump_file == nullptr)
         assert(0);
@@ -165,10 +163,10 @@ void fill_file_with_null(FILE* graph_dump_file, void* node)
     assert(node);
     assert(graph_dump_file);
 
-   fprintf(graph_dump_file, "\"%p\" [style = \"filled\", fillcolor = \"#ff9191\", label=<\n"
-                            "<table border = \"0\" cellspacing=\"2\" cellpadding=\"4\">\n"
-                            "<tr><td>NULL</td></tr></table>>];\n\n",
-                            node);
+    fprintf(graph_dump_file, "\"%p\" [style = \"filled\", fillcolor = \"#ff9191\", label=<\n"
+                             "<table border = \"0\" cellspacing=\"2\" cellpadding=\"4\">\n"
+                             "<tr><td>NULL</td></tr></table>>];\n\n",
+                             node);
 }
 
 

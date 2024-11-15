@@ -96,8 +96,7 @@ void gamestart(Node* root)
 {
     assert(root);
 
-    Node** answer_node = (Node**)calloc(sizeof(Node*), 1);
-    akinator_func(root, answer_node);
+    Node* answer_node = akinator_func(root);
     assert(answer_node);
 
     fprintf(stderr, "\nam i right?");
@@ -106,14 +105,11 @@ void gamestart(Node* root)
 
     if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
     {
-        fprintf(stderr, "i hope you enjoy being ");
-        for(size_t i = 0; i < (*answer_node)->data_size; i++)
-            fprintf(stderr, GREEN_TEXT("%c"), (*answer_node)->data[i]);
-        fprintf(stderr, "!\n");
+        fprintf(stderr, "i hope you enjoy being %.*s!\n", (int)answer_node->data_size, answer_node->data);
     }
     else if(!strncmp(answer, NOANSWER, strlen(NOANSWER)))
     {
-        change_recieved_leaf(answer_node);
+        change_recieved_leaf(&answer_node);
         fprintf(stderr, "thank you! now i know more about matvey\n");
     }
     else
@@ -128,13 +124,11 @@ void gamestart(Node* root)
     if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))  // copypaste(((
     {
         free(answer);
-        free(answer_node);
         gamestart(root);
     }
     else
     {
         free(answer);
-        free(answer_node);
         fprintf(stderr, "good luck!\n");
     }
 
@@ -151,16 +145,17 @@ Akinator_Err comparestart(Node* root)
     fprintf(stderr, "input your " BLUE_TEXT("second ") "word/sentence\n");
     char* second = get_user_sentence();
 
-    if(!first && !second)
+    if(!first || !second)
     {
         free(first);
         free(second);
+        return CHOSEN_WORD_GETLINE_ERR;
     }
 
     Main_Stack_Struct first_stack  = {};
     Main_Stack_Struct second_stack = {};
 
-    ctor_stack(&first_stack);
+    ctor_stack(&first_stack); // FIXME check error
     ctor_stack(&second_stack);
 
     Find_Res retval_first  = NOTFOUND;
@@ -182,8 +177,9 @@ Akinator_Err comparestart(Node* root)
     dtor_stack(&first_stack);
     dtor_stack(&second_stack);
 
-    fprintf(stderr, "do you want to play again?\n"); // copypaste(((
+    fprintf(stderr, "do you want to play again?\n");
     char* answer = get_user_answer();
+
 
     if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
     {
@@ -208,7 +204,7 @@ Akinator_Err getdefine(Node* root)
     fprintf(stderr, BLUE_TEXT("input your word/sentence:\n"));
     char* chosen_sent = get_user_sentence();
 
-    Main_Stack_Struct stack;
+    Main_Stack_Struct stack = {};
     ctor_stack(&stack);
 
     Find_Res retval = NOTFOUND;
@@ -227,7 +223,7 @@ Akinator_Err getdefine(Node* root)
     fprintf(stderr, "do you want to play again?\n");
     char* answer = get_user_answer();
 
-    if(!strncmp(answer, YESANSWER, strlen(YESANSWER))) // copypaste(((
+    if(!strncmp(answer, YESANSWER, sizeof(YESANSWER) - 1))
     {
         free(answer);
         getdefine(root);
@@ -244,7 +240,7 @@ Akinator_Err getdefine(Node* root)
 }
 
 
-void find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Struct* stack)
+void find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Struct* stack) // FIXME retval and push pop
 {
     assert(node);
     assert(word);
@@ -318,19 +314,15 @@ void print_definition(Main_Stack_Struct* stack)
 }
 
 
-void akinator_func(Node* node, Node** answer_node)
+Node* akinator_func(Node* node)
 {
     assert(node);
-    assert(answer_node);
 
-    fprintf(stderr, "you are ");
-    for(size_t i = 0; i < node->data_size; i++)
-        fprintf(stderr, "%c", node->data[i]);
+    fprintf(stderr, "you are %.*s", (int)node->data_size, node->data);
 
     if(!node->left && !node->right)
     {
-        *answer_node = node;
-        return;
+        return node;
     }
 
     char* answer = get_user_answer();
@@ -338,19 +330,16 @@ void akinator_func(Node* node, Node** answer_node)
     if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
     {
         free(answer);
-        akinator_func(node->right, answer_node);
+        return akinator_func(node->right);
     }
     else if(!strncmp(answer, NOANSWER, strlen(NOANSWER)))
     {
         free(answer);
-        akinator_func(node->left, answer_node);
-    }
-    else // default
-    {
-        assert(0);
+        return akinator_func(node->left);
     }
 
-    return;
+    assert(0);
+    return nullptr;
 }
 
 
@@ -362,7 +351,7 @@ char* get_user_answer()
         return nullptr;
 
 
-    while(strncmp(userinput, YESANSWER, strlen(YESANSWER)) &&
+    while(strncmp(userinput, YESANSWER, strlen(YESANSWER)) && // FIXME limit attempts count
           strncmp(userinput, NOANSWER,  strlen(NOANSWER)))
     {
         fprintf(stderr, "try again!\n");
@@ -393,12 +382,6 @@ char* get_user_sentence()
         return nullptr;
     }
 
-    // for(size_t i = 0; i < size - 1; i++) // FIXME
-    // {
-    //     if(!isalnum(sentence[i]))
-    //         return nullptr;
-    // }
-
     return sentence;
 }
 
@@ -415,6 +398,9 @@ void compare_definitions_print(Main_Stack_Struct* first, Main_Stack_Struct* seco
 
     while(first->size != 0 && second->size != 0)
     {
+        int first_is_left  = 0;
+        int second_is_left = 0;
+
         if(first->size)
             stack_pop(first, &first_elem);
         else
@@ -425,62 +411,70 @@ void compare_definitions_print(Main_Stack_Struct* first, Main_Stack_Struct* seco
         else
             second_elem = nullptr;
 
-        Text_Colors color = MAGENTATEXT;
-
-        if(first_elem && first->size >= second->size)
+        if(strcmp(first_elem, NOTSTRING) == 0 && first->size > 0)
         {
-            if(!strncmp(first_elem, second_elem, strlen(first_elem)))
+            first_is_left = 1;
+            stack_pop(first, &first_elem);
+        }
+
+         if(strcmp(second_elem, NOTSTRING) == 0 && second->size > 0)
+        {
+            second_is_left = 1;
+            stack_pop(second, &second_elem);
+        }
+
+
+        if(first->size != second->size)
+        {
+            if(first->size > second->size)
             {
-                stack_elem_outp(first_elem, BLUETEXT);
-                color = BLUETEXT;
-            }
-            else
-            {
+                if(first_is_left)
+                    fprintf(stderr, MAGENTA_TEXT("%s "), NOTSTRING);
+
                 stack_elem_outp(first_elem, GREENTEXT);
-                color = GREENTEXT;
-            }
+                fprintf(stderr,  "\\---");
 
-            if(strcmp(first_elem, NOTSTRING) == 0 && first->size > 0)
-            {
-                fprintf(stderr, " ");
-                stack_pop(first, &first_elem);
-                if(strcmp(first_elem, second_elem) != 0)
-                    color = GREENTEXT;
-                stack_elem_outp(first_elem, color);
-            }
-        }
-        else
-        {
-            fprintf(stderr, "---");
-        }
-
-        fprintf(stderr, "\\");
-
-        if(second_elem && second->size >= first->size)
-        {
-            if(!strncmp(first_elem, second_elem, strlen(second_elem)))
-            {
-                stack_elem_outp(second_elem, BLUETEXT);
-                color = BLUETEXT;
+                stack_push(second, second_elem);
             }
             else
             {
-                stack_elem_outp(second_elem, REDTEXT);
-                color = REDTEXT;
-            }
+                fprintf(stderr,  "---\\");
+                if(second_is_left)
+                    fprintf(stderr, MAGENTA_TEXT("%s "), NOTSTRING);
 
-            if(strcmp(second_elem, NOTSTRING) == 0 && second->size > 0)
-            {
-                fprintf(stderr, " ");
-                stack_pop(second, &second_elem);
-                if(strcmp(first_elem, second_elem) != 0)
-                    color = REDTEXT;
-                stack_elem_outp(second_elem, color);
+                stack_elem_outp(second_elem, REDTEXT);
+
+                stack_push(first, first_elem);
             }
         }
         else
         {
-            fprintf(stderr, "---");
+            if(first_elem == second_elem && first_is_left == second_is_left)
+            {
+                if(first_is_left)
+                    fprintf(stderr, MAGENTA_TEXT("%s "), NOTSTRING);
+
+                stack_elem_outp(first_elem, BLUETEXT);
+                fprintf(stderr,  "\\");
+
+                if(second_is_left)
+                    fprintf(stderr, MAGENTA_TEXT("%s "), NOTSTRING);
+
+                stack_elem_outp(second_elem, BLUETEXT);
+            }
+            else
+            {
+                if(first_is_left)
+                    fprintf(stderr, MAGENTA_TEXT("%s "), NOTSTRING);
+
+                stack_elem_outp(first_elem, GREENTEXT);
+                fprintf(stderr,  "\\");
+
+                if(second_is_left)
+                    fprintf(stderr, MAGENTA_TEXT("%s "), NOTSTRING);
+
+                stack_elem_outp(second_elem, REDTEXT);
+            }
         }
 
         fprintf(stderr, "\n");
@@ -530,3 +524,14 @@ void stack_elem_outp(const StackElem_t elem, const Text_Colors color)
 
     }
 }
+
+
+int is_left_node(Node* node)
+{
+    return ((Node*)(node->parent))->left == node;
+}
+
+
+
+
+// TODO change compare to check parent's left and right
