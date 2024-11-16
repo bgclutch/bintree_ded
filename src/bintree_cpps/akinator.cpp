@@ -155,16 +155,42 @@ Akinator_Err comparestart(Node* root)
     Main_Stack_Struct first_stack  = {};
     Main_Stack_Struct second_stack = {};
 
-    if(dtor_stack(&first_stack) != ALL_IS_OK)
+    if(ctor_stack(&first_stack) != ALL_IS_OK)
         return AKINATOR_IS_DEAD;
 
-    if(dtor_stack(&first_stack) != ALL_IS_OK)
+    if(ctor_stack(&second_stack) != ALL_IS_OK)
         return AKINATOR_IS_DEAD;
 
     Find_Res retval_first  = NOTFOUND;
     Find_Res retval_second = NOTFOUND;
-    find_define(root, first,  &retval_first, &first_stack);
-    find_define(root, second, &retval_second, &second_stack);
+
+    if(find_define(root, first,  &retval_first,  &first_stack) == EXIT_FAILURE)
+    {
+        if(dtor_stack(&first_stack) != ALL_IS_OK)
+        return AKINATOR_IS_DEAD;
+
+        if(dtor_stack(&second_stack) != ALL_IS_OK)
+            return AKINATOR_IS_DEAD;
+
+        free(first);
+        free(second);
+
+        return AKINATOR_IS_DEAD;
+    }
+
+    if(find_define(root, second,  &retval_second,  &second_stack) == EXIT_FAILURE)
+    {
+        if(dtor_stack(&first_stack) != ALL_IS_OK)
+        return AKINATOR_IS_DEAD;
+
+        if(dtor_stack(&second_stack) != ALL_IS_OK)
+            return AKINATOR_IS_DEAD;
+
+        free(first);
+        free(second);
+
+        return AKINATOR_IS_DEAD;
+    }
 
     if(retval_first == NOTFOUND || retval_second == NOTFOUND)
     {
@@ -190,7 +216,8 @@ Akinator_Err comparestart(Node* root)
     if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
     {
         free(answer);
-        comparestart(root);
+        if(comparestart(root) != AKINATOR_STILL_ALIVE)
+            return AKINATOR_IS_DEAD;
     }
     else
     {
@@ -211,10 +238,16 @@ Akinator_Err getdefine(Node* root)
     char* chosen_sent = get_user_sentence();
 
     Main_Stack_Struct stack = {};
-    ctor_stack(&stack);
+    if(ctor_stack(&stack))
+        return CHOSEN_WORD_GETLINE_ERR;
 
     Find_Res retval = NOTFOUND;
-    find_define(root, chosen_sent, &retval, &stack);
+    if(find_define(root, chosen_sent, &retval, &stack))
+    {
+        if(dtor_stack(&stack) != ALL_IS_OK)
+            return AKINATOR_IS_DEAD;
+        return CHOSEN_WORD_GETLINE_ERR;
+    }
 
     if(retval == FOUND)
     {
@@ -232,7 +265,8 @@ Akinator_Err getdefine(Node* root)
     if(!strncmp(answer, YESANSWER, sizeof(YESANSWER) - 1))
     {
         free(answer);
-        getdefine(root);
+        if(getdefine(root))
+            return AKINATOR_IS_DEAD;
     }
     else
     {
@@ -248,7 +282,7 @@ Akinator_Err getdefine(Node* root)
 }
 
 
-void find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Struct* stack) // FIXME retval and push pop
+int find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Struct* stack) // FIXME retval and push pop
 {
     assert(node);
     assert(word);
@@ -257,35 +291,42 @@ void find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Stru
 
     char* pop_elem = 0;
 
-    stack_push(stack, node->data);
+    if(stack_push(stack, node->data) != ALL_IS_OK)
+        return EXIT_FAILURE;
 
     if(strncmp(node->data, word, node->data_size) == 0)
     {
         *retval = FOUND;
-        stack_pop(stack, &pop_elem);
+
+        if(stack_pop(stack, &pop_elem) != ALL_IS_OK)
+            return EXIT_FAILURE;
     }
 
     if(!node->left && !node->right)
-        return;
+        return NOTFOUND;
 
     if(*retval == FOUND)
     {
-        return;
+        return FOUND;
     }
     else
     {
-        stack_push(stack, NOTSTRING);
+        if(stack_push(stack, NOTSTRING) != ALL_IS_OK)
+        return EXIT_FAILURE;
         find_define(node->left, word, retval, stack);
     }
     if(*retval == NOTFOUND)
     {
-        stack_pop(stack, &pop_elem);
-        stack_pop(stack, &pop_elem);
+        if(stack_pop(stack, &pop_elem) != ALL_IS_OK)
+            return EXIT_FAILURE;
+
+        if(stack_pop(stack, &pop_elem) != ALL_IS_OK)
+            return EXIT_FAILURE;
     }
 
     if(*retval == FOUND)
     {
-        return;
+        return FOUND;
     }
     else
     {
@@ -294,8 +335,11 @@ void find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Stru
 
     if(*retval == NOTFOUND)
     {
-        stack_pop(stack, &pop_elem);
+        if(stack_pop(stack, &pop_elem) != ALL_IS_OK)
+            return EXIT_FAILURE;
     }
+
+    return NOTFOUND;
 }
 
 void print_definition(Main_Stack_Struct* stack)

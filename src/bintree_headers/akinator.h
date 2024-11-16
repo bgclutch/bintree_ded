@@ -70,7 +70,7 @@ void gamestart(Node* root);
 
 Node* akinator_func(Node* node);
 
-void find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Struct* stack);
+int find_define(Node* node, const char* word, Find_Res* retval, Main_Stack_Struct* stack);
 
 Akinator_Err getdefine(Node* root);
 
