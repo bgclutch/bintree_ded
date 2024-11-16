@@ -105,7 +105,7 @@ void gamestart(Node* root)
 
     if(!strncmp(answer, YESANSWER, strlen(YESANSWER)))
     {
-        fprintf(stderr, "i hope you enjoy being %.*s!\n", (int)answer_node->data_size, answer_node->data);
+        fprintf(stderr, "i hope you enjoy being " GREEN_TEXT("%.*s!\n"), (int)answer_node->data_size, answer_node->data);
     }
     else if(!strncmp(answer, NOANSWER, strlen(NOANSWER)))
     {
@@ -155,12 +155,15 @@ Akinator_Err comparestart(Node* root)
     Main_Stack_Struct first_stack  = {};
     Main_Stack_Struct second_stack = {};
 
-    ctor_stack(&first_stack); // FIXME check error
-    ctor_stack(&second_stack);
+    if(dtor_stack(&first_stack) != ALL_IS_OK)
+        return AKINATOR_IS_DEAD;
+
+    if(dtor_stack(&first_stack) != ALL_IS_OK)
+        return AKINATOR_IS_DEAD;
 
     Find_Res retval_first  = NOTFOUND;
     Find_Res retval_second = NOTFOUND;
-    find_define(root, first,  &retval_first,  &first_stack);
+    find_define(root, first,  &retval_first, &first_stack);
     find_define(root, second, &retval_second, &second_stack);
 
     if(retval_first == NOTFOUND || retval_second == NOTFOUND)
@@ -174,8 +177,11 @@ Akinator_Err comparestart(Node* root)
 
     free(first);
     free(second);
-    dtor_stack(&first_stack);
-    dtor_stack(&second_stack);
+    if(dtor_stack(&first_stack) != ALL_IS_OK)
+        return AKINATOR_IS_DEAD;
+
+    if(dtor_stack(&second_stack) != ALL_IS_OK)
+        return AKINATOR_IS_DEAD;
 
     fprintf(stderr, "do you want to play again?\n");
     char* answer = get_user_answer();
@@ -235,7 +241,9 @@ Akinator_Err getdefine(Node* root)
     }
 
     free(chosen_sent);
-    dtor_stack(&stack);
+    if(dtor_stack(&stack) != ALL_IS_OK)
+        return AKINATOR_IS_DEAD;
+
     return AKINATOR_STILL_ALIVE;
 }
 
@@ -351,8 +359,8 @@ char* get_user_answer()
         return nullptr;
 
 
-    while(strncmp(userinput, YESANSWER, strlen(YESANSWER)) && // FIXME limit attempts count
-          strncmp(userinput, NOANSWER,  strlen(NOANSWER)))
+    for(int i = 0; strncmp(userinput, YESANSWER, strlen(YESANSWER)) &&
+          strncmp(userinput, NOANSWER,  strlen(NOANSWER)) && i < 5; i++)
     {
         fprintf(stderr, "try again!\n");
         free(userinput);
@@ -417,12 +425,11 @@ void compare_definitions_print(Main_Stack_Struct* first, Main_Stack_Struct* seco
             stack_pop(first, &first_elem);
         }
 
-         if(strcmp(second_elem, NOTSTRING) == 0 && second->size > 0)
+        if(strcmp(second_elem, NOTSTRING) == 0 && second->size > 0)
         {
             second_is_left = 1;
             stack_pop(second, &second_elem);
         }
-
 
         if(first->size != second->size)
         {
@@ -436,7 +443,7 @@ void compare_definitions_print(Main_Stack_Struct* first, Main_Stack_Struct* seco
 
                 stack_push(second, second_elem);
             }
-            else
+            else if(second->size > first->size)
             {
                 fprintf(stderr,  "---\\");
                 if(second_is_left)
@@ -530,8 +537,3 @@ int is_left_node(Node* node)
 {
     return ((Node*)(node->parent))->left == node;
 }
-
-
-
-
-// TODO change compare to check parent's left and right

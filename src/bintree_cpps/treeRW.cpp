@@ -199,7 +199,7 @@ Akinator_Err write_tree_to_file(Node* root, const char* outputfilename)
 }
 
 
-Akinator_Err write_tree_to_file(Node* root, FILE* file) // FIXME WTF REALLOC
+Akinator_Err write_tree_to_file(Node* root, FILE* file)
 {
     assert(root);
     assert(file);

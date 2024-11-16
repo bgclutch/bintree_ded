@@ -56,11 +56,15 @@ Dump_Errors dump_is_err(Dump_Errors result, const char* name, const size_t line)
 
 void graphic_dump(Node* root, Dump_St* General_Dump);
 
+void put_node_to_dot_file(FILE* dotfile, Node* node, const char* statement);
+
+void fill_dot_file(Node* root, FILE* dotfile);
+
 Dump_Errors prepare_graphic_file(const Dump_St General_Dump);
 
 void close_graphic_dump(const Dump_St General_Dump);
 
-void fill_file_with_number(FILE* graph_dump_file, Node* node);
+void fill_file_with_data(FILE* graph_dump_file, Node* node);
 
 void fill_file_with_null(FILE* graph_dump_file, void* node);
 

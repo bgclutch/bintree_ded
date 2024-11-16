@@ -37,74 +37,50 @@ Dump_Errors prepare_graphic_file(const Dump_St General_Dump)
 }
 
 
-void graphic_dump(Node* node, Dump_St* General_Dump) // FIXME open file 1 time
+void graphic_dump(Node* root, Dump_St* General_Dump)
 {
-    assert(node);
+    assert(root);
     assert(General_Dump);
 
     FILE* graph_dump_file = fopen(General_Dump->GRAPHIC_DUMP, "a");
     assert(graph_dump_file);
 
-    if(node->left) // FIXME make func
+    fill_dot_file(root, graph_dump_file);
+
+    assert(!fclose(graph_dump_file));
+}
+
+
+void fill_dot_file(Node* root, FILE* dotfile)
+{
+
+    put_node_to_dot_file(dotfile, root->left,  "NO");
+    put_node_to_dot_file(dotfile, root->right, "YES");
+
+    fill_file_with_data(dotfile, root);
+
+}
+
+
+void put_node_to_dot_file(FILE* dotfile, Node* node, const char* statement)
+{
+    fill_file_with_data(dotfile, node);
+
+    fprintf(dotfile, "\"%p\" -> \"%p\"[label=\"%s\"];\n", node->parent, node, statement);
+
+    if(!node->left && !node->right)
     {
-        fill_file_with_number(graph_dump_file, node->left);
+        fprintf(dotfile, "\"%p\" -> \"%p\";\n", node, &node->left);
+        fill_file_with_null(dotfile, &node->left);
 
-        fprintf(graph_dump_file, "\"%p\" -> \"%p\"[label=\"NO\"];\n", node, node->left);
+        fprintf(dotfile, "\"%p\" -> \"%p\";\n", node, &node->right);
+        fill_file_with_null(dotfile, &node->right);
 
-        if(fclose(graph_dump_file))
-            assert(0);
-
-        graphic_dump(node->left, General_Dump);
-
-    }
-    else
-    {
-        fill_file_with_null(graph_dump_file, &node->left);
-
-    fprintf(graph_dump_file, "\"%p\" -> \"%p\";\n", node, &node->left);
-
-        if(fclose(graph_dump_file))
-            assert(0);
-    }
-
-    graph_dump_file = fopen(General_Dump->GRAPHIC_DUMP, "a");
-
-    if(graph_dump_file == nullptr)
-        assert(0);
-
-    if(node->right) // FIXME make func
-    {
-        fill_file_with_number(graph_dump_file, node->right);
-
-        fprintf(graph_dump_file, "\"%p\" -> \"%p\"[label=\"YES\"];\n", node, node->right);
-
-
-        if(fclose(graph_dump_file))
-            assert(0);
-
-        graphic_dump(node->right, General_Dump);
-    }
-    else
-    {
-        fill_file_with_null(graph_dump_file, &node->right);
-
-        fprintf(graph_dump_file, "\"%p\" -> \"%p\";\n", node, &node->right);
-
-
-        if(fclose(graph_dump_file))
-            assert(0);
+        return;
     }
 
-    graph_dump_file = fopen(General_Dump->GRAPHIC_DUMP, "a");
-
-    if(graph_dump_file == nullptr)
-        assert(0);
-
-    fill_file_with_number(graph_dump_file, node);
-
-
-    if(fclose(graph_dump_file))
-            assert(0);
+    put_node_to_dot_file(dotfile, node->left,  "NO");
+    put_node_to_dot_file(dotfile, node->right, "YES");
 
     return;
 }
@@ -112,7 +88,7 @@ void graphic_dump(Node* node, Dump_St* General_Dump) // FIXME open file 1 time
 
 void close_graphic_dump(const Dump_St General_Dump)
 {
-    FILE* graph_dump_file = fopen(General_Dump.GRAPHIC_DUMP, "a+");
+    FILE* graph_dump_file = fopen(General_Dump.GRAPHIC_DUMP, "a");
 
     if(graph_dump_file == nullptr)
         assert(0);
@@ -138,7 +114,7 @@ Dump_Errors dump_is_err(const Dump_Errors result, const char* name, const size_t
 }
 
 
-void fill_file_with_number(FILE* graph_dump_file, Node* node)
+void fill_file_with_data(FILE* graph_dump_file, Node* node)
 {
     assert(graph_dump_file);
     assert(node);
@@ -151,7 +127,7 @@ void fill_file_with_number(FILE* graph_dump_file, Node* node)
     {
         print_to_dump_file(node, graph_dump_file, BRANCH_COLOR);
     }
-    else
+    else if(node->parent == nullptr)
     {
         print_to_dump_file(node, graph_dump_file, ROOT_COLOR);
     }
